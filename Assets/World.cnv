@@ -1,0 +1,19 @@
+module Game
+
+open "UnityEngine.dll"
+open UnityEngine
+
+worldEntity World = {
+  Cube : Cube
+  
+  Create() = 
+    { Cube = new Cube() }  
+}
+
+entity Cube = {
+    inherit UnityCube
+    rule Position =
+        yield Position + new Vector3(0.05f, 0.0f, 0.0f)
+    Create() = 
+    { UnityCube = UnityCube.Find() }
+}
