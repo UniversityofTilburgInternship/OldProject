@@ -1,13 +1,26 @@
 -debug
 -target:library
 -nowarn:0169
--out:Temp/Assembly-CSharp.dll
+-out:Temp/Assembly-CSharp-Editor.dll
 -r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
--r:"C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
--r:"C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
--r:"C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
--r:"C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
 -r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
+-r:Library/ScriptAssemblies/Assembly-CSharp.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll"
+-r:"C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\androidplayer/UnityEditor.Android.Extensions.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll"
+-r:"C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\wp8support/UnityEditor.WP8.Extensions.dll"
+-r:"C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\metrosupport/UnityEditor.Metro.Extensions.dll"
+-r:"C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\TizenPlayer\TizenPlayer/UnityEditor.Tizen.Extensions.dll"
+-r:"C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\stvplayer\STVPlayer/UnityEditor.SamsungTV.Extensions.dll"
+-r:"C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\webglsupport/UnityEditor.WebGL.Extensions.dll"
+-r:"C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\linuxstandalonesupport/UnityEditor.LinuxStandalone.Extensions.dll"
+-r:"C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll"
+-r:"C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\macstandalonesupport/UnityEditor.OSXStandalone.Extensions.dll"
 -r:"C:/Program Files (x86)/Unity/Editor/Data\Managed/Mono.Cecil.dll"
 -r:"C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll"
 -define:UNITY_5_2_0
@@ -78,8 +91,6 @@
 -define:UNITY_EDITOR_32
 -define:UNITY_EDITOR_WIN
 -define:UNITY_TEAM_LICENSE
-Assets/Prelude.cs
-Assets/UnityCube.cs
-Assets/World.cs
--r:"C:\Program Files (x86)\Unity\Editor\Data\Mono\lib\mono\unity\System.Runtime.Serialization.dll"
--r:"C:\Program Files (x86)\Unity\Editor\Data\Mono\lib\mono\unity\System.Xml.Linq.dll"
+Assets/Editor/CasanovaAssetsImporter.cs
+-r:"C:\Program Files (x86)\Unity\Editor\Data\Mono\lib\mono\2.0\System.Runtime.Serialization.dll"
+-r:"C:\Program Files (x86)\Unity\Editor\Data\Mono\lib\mono\2.0\System.Xml.Linq.dll"
