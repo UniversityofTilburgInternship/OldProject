@@ -1,0 +1,11 @@
+module Game
+
+open "UnityEngine.dll"
+open UnityEngine
+
+worldEntity World = {
+  Number : int
+  
+  Create() =   
+    { Number = 3  }  
+}
