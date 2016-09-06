@@ -1,0 +1,22 @@
+module Game
+
+open "UnityEngine.dll"
+open UnityEngine
+
+worldEntity World = {
+  Goblin   : Goblin
+  
+  Create() = 
+    { Goblin = new Goblin()}  
+}
+
+entity Goblin = {
+  inherit UnityGoblin
+
+  rule Position, IsMovingLegs =
+    wait Input.GetKey(KeyCode.Space)
+    yield Position + new Vector3(dt*2.0f, 0.0f, 0.0f), true    
+
+  Create() =
+  {UnityGoblin = UnityGoblin.Find()}
+} 
