@@ -13,9 +13,16 @@ worldEntity World = {
 entity Goblin = {
   inherit UnityGoblin
 
+  //moving right
   rule Position, IsMovingLegs =
     wait Input.GetKey(KeyCode.Space)
-    yield Position + new Vector3(dt*2.0f, 0.0f, 0.0f), true    
+    yield Position + new Vector3(dt*4.0f, 0.0f, 0.0f), true    
+
+  //moving left
+  rule Position, IsMovingLegs =
+    wait Input.GetKey(KeyCode.C)
+    yield Position - new Vector3(dt*4.0f, 0.0f, 0.0f), true
+  
 
   Create() =
   {UnityGoblin = UnityGoblin.Find()}
