@@ -4,16 +4,31 @@ open "UnityEngine.dll"
 open UnityEngine
 
 worldEntity World = {
-  Cube : Cube
-  
-  Create() = 
-    { Cube = new Cube() }  
+  Cubes : [Cube]
+  rule Cubes =
+    yield [for c in Cubes do
+           where (not c.Destroyed)
+           select c]
+  rule Cubes =
+    wait Input.GetKeyDown(KeyCode.P)
+    yield new Cube() :: Cubes
+  Create() =   
+    { Cubes = []  }  
 }
 
 entity Cube = {
-    inherit UnityCube
-    rule Position =
-        yield Position + new Vector3(0.05f, 0.0f, 0.0f)
-    Create() = 
-    { UnityCube = UnityCube.Find() }
+  inherit UnityCube
+  rule Position = 
+    wait Input.GetKey(KeyCode.Space)
+    yield Position + new Vector3(-0.05f, 0.0f, 0.0f)
+  rule Color = 
+    yield Color.red
+    wait 1.0f
+    yield Color.green
+    wait 1.0f
+  rule Destroyed =
+    wait 5.0f
+    yield true
+  Create() = 
+    { UnityCube = UnityCube.Instantiate()  }
 }
