@@ -24,7 +24,6 @@ entity Goblin = {
     wait Input.GetKey(KeyCode.C)
     yield Position - new Vector3(dt*2.0f, 0.0f, 0.0f), true
    
-
   Create() =
   {UnityGoblin = UnityGoblin.Find()}
 } 

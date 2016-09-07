@@ -50,4 +50,5 @@ public class UnityCube : MonoBehaviour
         return GameObject.Find("/MyCube").GetComponent<UnityCube>();
     }
 }
-                   
+
+             
