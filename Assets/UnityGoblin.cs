@@ -4,18 +4,18 @@ using System.Collections;
 
 public class UnityGoblin : MonoBehaviour
 {
-    //Big5Personality big5Personality = new Big5Personality();
-    //public ArrayList Big5Personality
-    //{
-    //    get
-    //    {
-    //        return big5Personality.toList();
-    //    }
-    //    set
-    //    {
-    //        ArrayList returnList = value;
-    //    }
-    //}
+    Big5Personality big5Personality = new Big5Personality();
+    public ArrayList Big5Personality
+    {
+        get
+        {
+            return big5Personality.toList();
+        }
+        set
+        {
+            ArrayList returnList = value;
+        }
+    }
 
     public Color Color
     {
@@ -86,3 +86,4 @@ public class UnityGoblin : MonoBehaviour
 
 
 
+    
