@@ -2,10 +2,10 @@
 -target:library
 -nowarn:0169
 -out:Temp/Assembly-CSharp.dll
--r:"C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll"
--r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
--r:"C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
--r:"C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll"
+-r:C:/Programming/IDEs/Unity/Editor/Data/Managed/UnityEngine.dll
+-r:C:/Programming/IDEs/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+-r:C:/Programming/IDEs/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+-r:C:/Programming/IDEs/Unity/Editor/Data/Managed/UnityEditor.dll
 -define:UNITY_5_3_OR_NEWER
 -define:UNITY_5_4_OR_NEWER
 -define:UNITY_5_4_0
@@ -79,7 +79,7 @@
 -define:TRACE
 -define:UNITY_ASSERTIONS
 -define:UNITY_EDITOR
--define:UNITY_EDITOR_64
+-define:UNITY_EDITOR_32
 -define:UNITY_EDITOR_WIN
 -define:UNITY_TEAM_LICENSE
 -define:ENABLE_VSTU
@@ -88,5 +88,5 @@ Assets/Prelude.cs
 Assets/UnityCube.cs
 Assets/UnityGoblin.cs
 Assets/World.cs
--r:"C:\Program Files\Unity\Editor\Data\Mono\lib\mono\unity\System.Runtime.Serialization.dll"
--r:"C:\Program Files\Unity\Editor\Data\Mono\lib\mono\unity\System.Xml.Linq.dll"
+-r:C:\Programming\IDEs\Unity\Editor\Data\Mono\lib\mono\unity\System.Runtime.Serialization.dll
+-r:C:\Programming\IDEs\Unity\Editor\Data\Mono\lib\mono\unity\System.Xml.Linq.dll
