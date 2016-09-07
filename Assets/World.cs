@@ -89,7 +89,7 @@ public Goblin()
 frame = World.frame;
 
 		this.Rule0(dt, world);
-
+		this.Rule1(dt, world);
 	}
 
 
@@ -102,7 +102,7 @@ frame = World.frame;
 	{
 
 	case -1:
-	if(!(UnityEngine.Input.GetKey(KeyCode.Space)))
+	if(!(UnityEngine.Input.GetKey(KeyCode.C)))
 	{
 
 	s0 = -1;
@@ -111,9 +111,31 @@ return;	}else
 
 	goto case 0;	}
 	case 0:
-	Position = ((Position) + (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
+	Position = ((Position) - (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
 	IsMovingLegs = true;
 	s0 = -1;
+return;	
+	default: return;}}
+	
+
+	int s1=-1;
+	public void Rule1(float dt, World world){ 
+	switch (s1)
+	{
+
+	case -1:
+	if(!(UnityEngine.Input.GetKey(KeyCode.Space)))
+	{
+
+	s1 = -1;
+return;	}else
+	{
+
+	goto case 0;	}
+	case 0:
+	Position = ((Position) + (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
+	IsMovingLegs = true;
+	s1 = -1;
 return;	
 	default: return;}}
 	
@@ -122,6 +144,5 @@ return;
 
 
 
-
 }
-}                
+}        

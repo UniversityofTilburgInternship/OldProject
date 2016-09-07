@@ -20,6 +20,7 @@ public class UnityGoblin : MonoBehaviour
                 gameObject.GetComponent<Animator>().Play("run");
             }
         }
+
     }
 
 
@@ -64,4 +65,4 @@ public class UnityGoblin : MonoBehaviour
     }
 
 }
-                  
+                                              
