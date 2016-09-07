@@ -45,7 +45,7 @@ public bool JustEntered = true;
 public Goblin()
 	{JustEntered = false;
  frame = World.frame;
-		big5Personality = Big5Personality;
+		big5personality = Big5Personality;
 		UnityGoblin = UnityGoblin.Find();
 		
 }
@@ -68,7 +68,7 @@ public Goblin()
   set{UnityGoblin.Scale = value; }
  }
 	public UnityGoblin UnityGoblin;
-	public List<System.Int32> big5Personality;
+	public List<System.Int32> big5personality;
 	public System.Boolean enabled{  get { return UnityGoblin.enabled; }
   set{UnityGoblin.enabled = value; }
  }
@@ -150,4 +150,4 @@ return;
 
 
 }
-}  
+} 

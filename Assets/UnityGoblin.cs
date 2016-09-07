@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class UnityGoblin : MonoBehaviour
 {
-    Big5Personality big5Personality = new Big5Personality();
-    public List<int> Big5Personality
+    static Big5Personality big5Personality = new Big5Personality();
+    public static List<int> Big5Personality
     {
         get
         {
@@ -13,9 +13,12 @@ public class UnityGoblin : MonoBehaviour
         }
         set
         {
-            value = value;
+            big5Personality.setList(value);
         }
+        
     }
+
+
 
     public Color Color
     {
@@ -34,12 +37,8 @@ public class UnityGoblin : MonoBehaviour
                 gameObject.GetComponent<Animator>().Play("cast");
             }
         }
-
-
     }
 
-
-    bool destroyed = false;
     public Vector3 Scale
     {
         get
@@ -51,7 +50,8 @@ public class UnityGoblin : MonoBehaviour
             gameObject.transform.localScale = value;
         }
     }
-
+    
+    bool destroyed = false;
     public bool Destroyed
     {
         get { return destroyed; }
@@ -86,4 +86,4 @@ public class UnityGoblin : MonoBehaviour
 
 
 
-                               
+                         

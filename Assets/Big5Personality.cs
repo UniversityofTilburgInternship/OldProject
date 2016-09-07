@@ -2,22 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Big5Personality : MonoBehaviour
+public class Big5Personality 
 {
-    public int ExtraversionScale;
-    public int EgoismScale;
-    public int ThoroughnessScale;
-    public int EmotionalStabilityScale;
-    public int OpennessScale;
+    public int ExtraversionScale = 0;
+    public int EgoismScale = 0;
+    public int ThoroughnessScale = 0;
+    public int EmotionalStabilityScale = 0;
+    public int OpennessScale = 0;
 
-    public Big5Personality()
+    public void setList(List<int> values)
     {
-        this.ExtraversionScale = 0;
-        this.EgoismScale = 0;
-        this.ThoroughnessScale = 0;
-        this.EmotionalStabilityScale = 0;
-        this.OpennessScale = 0;
+        this.ExtraversionScale = values[0];
+        this.EgoismScale = values[1];
+        this.ThoroughnessScale = values[2];
+        this.EmotionalStabilityScale = values[3];
+        this.OpennessScale = values[4];
     }
+    public Big5Personality() { }
 
     public ArrayList toArrayList()
     {
@@ -29,4 +30,4 @@ public class Big5Personality : MonoBehaviour
     }
 }
 
-                                                   
+    
