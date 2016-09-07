@@ -45,10 +45,16 @@ public bool JustEntered = true;
 public Goblin()
 	{JustEntered = false;
  frame = World.frame;
+		big5Personality = (
+
+Enumerable.Empty<System.Single>()).ToList<System.Single>();
 		UnityGoblin = UnityGoblin.Find();
 		
 }
-		public UnityEngine.Color Color{  get { return UnityGoblin.Color; }
+		public System.Collections.ArrayList Big5Personality{  get { return UnityGoblin.Big5Personality; }
+  set{UnityGoblin.Big5Personality = value; }
+ }
+	public UnityEngine.Color Color{  get { return UnityGoblin.Color; }
   set{UnityGoblin.Color = value; }
  }
 	public System.Boolean Destroyed{  get { return UnityGoblin.Destroyed; }
@@ -64,6 +70,7 @@ public Goblin()
   set{UnityGoblin.Scale = value; }
  }
 	public UnityGoblin UnityGoblin;
+	public List<System.Single> big5Personality;
 	public System.Boolean enabled{  get { return UnityGoblin.enabled; }
   set{UnityGoblin.enabled = value; }
  }
@@ -145,4 +152,4 @@ return;
 
 
 }
-}      
+}  
