@@ -15,8 +15,9 @@ public class UnityGoblin : MonoBehaviour
         get { return gameObject.GetComponent<Animation>(); }
         set
         {
-            if (value && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("walk")) {
-                
+            if (value && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("walk"))
+            {
+
                 gameObject.GetComponent<Animator>().Play("run");
             }
         }
@@ -64,5 +65,4 @@ public class UnityGoblin : MonoBehaviour
         return GameObject.Find("/Goblin").GetComponent<UnityGoblin>();
     }
 
-}
-                                                                   
+}   
