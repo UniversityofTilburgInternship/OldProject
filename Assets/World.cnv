@@ -13,7 +13,7 @@ worldEntity World = {
  
 entity Goblin = {
   inherit UnityGoblin
-  big5Personality : [float32]
+  big5Personality : [int] 
 
   //moving right
   rule Position, IsMovingLegs =
@@ -27,9 +27,9 @@ entity Goblin = {
    
 
  
-  Create() =
+  Create() =  
     {
       UnityGoblin = UnityGoblin.Find()
-      big5Personality = []
+      big5Personality = Big5Personality 
     }
 } 

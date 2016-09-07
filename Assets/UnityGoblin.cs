@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 
 public class UnityGoblin : MonoBehaviour
 {
     Big5Personality big5Personality = new Big5Personality();
-    public ArrayList Big5Personality
+    public List<int> Big5Personality
     {
         get
         {
@@ -13,7 +13,7 @@ public class UnityGoblin : MonoBehaviour
         }
         set
         {
-            ArrayList returnList = value;
+            value = value;
         }
     }
 
@@ -86,4 +86,4 @@ public class UnityGoblin : MonoBehaviour
 
 
 
-          
+                               
