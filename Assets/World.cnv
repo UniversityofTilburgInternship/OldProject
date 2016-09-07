@@ -13,8 +13,8 @@ worldEntity World = {
  
 entity Goblin = {
   inherit UnityGoblin
-
-  Big5Personality : Big5Personality
+  
+  big5Personality : [float32]
 
   //moving right
   rule Position, IsMovingLegs =
@@ -25,14 +25,10 @@ entity Goblin = {
   //moving left
   rule Position, IsMovingLegs =
     wait Input.GetKey(KeyCode.C)
-<<<<<<< HEAD
     yield Position - new Vector3(dt*2.0f, 0.0f, 0.0f), true 
      
-=======
-    yield Position - new Vector3(dt*2.0f, 0.0f, 0.0f), true
-   
-
->>>>>>> 7b09d9ef986063cd2fd7ae90816922e5ed3d5413
   Create() =
-  {UnityGoblin = UnityGoblin.Find()}
+  {  UnityGoblin = UnityGoblin.Find()
+    big5Personality = []
+}
 } 
