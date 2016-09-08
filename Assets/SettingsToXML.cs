@@ -24,6 +24,7 @@ public class SettingsToXML : MonoBehaviour
   [Range(-100, 100)]
   public int EmotionalStability;
 
+
   private string pathToSettings;
 
   // Use this for initialization
@@ -95,3 +96,4 @@ public class SettingsToXML : MonoBehaviour
     return doc;
   }
 }
+                   

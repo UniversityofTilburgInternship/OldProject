@@ -10,13 +10,14 @@ worldEntity World = {
   Create() = 
     { Goblin = new Goblin()}  
 }
-  
+   
 entity Goblin = {
   inherit UnityGoblin
   big5personality : [int] 
-
-  //moving right
-  rule Position, IsMovingLegs =
+  
+    
+  //moving right          
+  rule Position, IsMovingLegs =    
     wait Input.GetKey(KeyCode.Space)
     yield Position + new Vector3(dt * 2.0f, 0.0f, 0.0f), true    
 
@@ -27,7 +28,7 @@ entity Goblin = {
      
   Create() =  
     {
-      big5personality = Big5Personality 
+      big5personality = Big5Personality  
       UnityGoblin = UnityGoblin.Find()
       
     }

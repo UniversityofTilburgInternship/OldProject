@@ -102,8 +102,7 @@ frame = World.frame;
 
 
 	int s0=-1;
-	public void Rule0(float dt, World world){ 
-	switch (s0)
+	public void Rule0(float dt, World world){ switch (s0)
 	{
 
 	case -1:
@@ -124,8 +123,7 @@ return;
 	
 
 	int s1=-1;
-	public void Rule1(float dt, World world){ 
-	switch (s1)
+	public void Rule1(float dt, World world){ switch (s1)
 	{
 
 	case -1:
@@ -150,4 +148,4 @@ return;
 
 
 }
-}         
+}    
