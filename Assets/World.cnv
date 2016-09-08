@@ -10,7 +10,7 @@ worldEntity World = {
   Create() = 
     { Goblin = new Goblin()}  
 }
- 
+  
 entity Goblin = {
   inherit UnityGoblin
   big5personality : [int] 
