@@ -1,0 +1,28 @@
+<settings>
+  <personalities>
+    <personality>
+      <name>
+        Extraversion
+      </name>
+      <value>-60</value>
+    </personality>
+    <personality>
+      <name>
+        Egoism
+      </name>
+      <value>39</value>
+    </personality>
+    <personality>
+      <name>
+        Thoroughness
+      </name>
+      <value>8</value>
+    </personality>
+    <personality>
+      <name>
+        EmotionalStability
+      </name>
+      <value>100</value>
+    </personality>
+  </personalities>
+</settings>
