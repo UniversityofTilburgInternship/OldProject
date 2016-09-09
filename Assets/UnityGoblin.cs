@@ -5,8 +5,8 @@ using Casanova.Prelude;
 
 public class UnityGoblin : MonoBehaviour
 {
-  public List<Tuple<string, int>> listSettings { get; set; }
-
+  public List<Tuple<string, int,int>> listSettings { get; set; }
+  //public List<Tuple<string, int, int>> listSettings { get; set;}
   public Color Color
   {
     get { return gameObject.GetComponent<Renderer>().material.color; }
@@ -51,7 +51,7 @@ public class UnityGoblin : MonoBehaviour
   }
   void Start()
   {
-    SettingsToXML settings = gameObject.GetComponent<SettingsToXML>();
+    AvatarGenerator settings = gameObject.GetComponent<AvatarGenerator>();
     listSettings = settings.SettingsList;
   }  
 
@@ -75,4 +75,4 @@ public class UnityGoblin : MonoBehaviour
 
 }
 
-                                                
+                                                          

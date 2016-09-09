@@ -46,7 +46,7 @@ public Goblin()
 	{JustEntered = false;
  frame = World.frame;
 		UnityGoblin ___goblin00;
-		___goblin00 = UnityGoblin.Find();
+		___goblin00 = UnityGoblin.Instantiate();
 		settingslistbigfive = ___goblin00.listSettings;
 		UnityGoblin = ___goblin00;
 		
@@ -150,4 +150,4 @@ return;
 
 
 }
-}           
+}         

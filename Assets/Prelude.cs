@@ -4,15 +4,29 @@ using System.Collections.Generic;
 public enum RuleResult { Done, Working }
 namespace Casanova.Prelude
 {
-  public class Tuple<T,E> {
-		  public T Item1 { get; set;}
-		  public E Item2 { get; set;} 
-		  public Tuple(T item1, E item2)
-		  {
-						  Item1 = item1;
-						  Item2 = item2;
-			}
-	}
+  public class Tuple<T, E>
+  {
+    public T Item1 { get; set; }
+    public E Item2 { get; set; }
+    public Tuple(T item1, E item2)
+    {
+      Item1 = item1;
+      Item2 = item2;
+    }
+  }
+  public class Tuple<T, E, F>
+  {
+    public T Item1 { get; set; }
+    public E Item2 { get; set; }
+    public F Item3 { get; set; }
+    public Tuple(T item1, E item2, F item3)
+    {
+      Item1 = item1;
+      Item2 = item2;
+      Item3 = item3;
+
+    }
+  }
   public static class MyExtensions
   {
     //public T this[List<T> list]
@@ -129,7 +143,8 @@ namespace Casanova.Prelude
     public bool IsNone { get { return !IsSome; } }
     protected abstract Just<T> Some { get; }
 
-    public U Match<U>(Func<T,U> f, Func<U> g) {
+    public U Match<U>(Func<T, U> f, Func<U> g)
+    {
       if (this.IsSome)
         return f(this.Some.Value);
       else
@@ -171,7 +186,7 @@ namespace Casanova.Prelude
       if ((System.Object)a == null || (System.Object)b == null) return System.Object.Equals(a, b);
       return !(a.Equals(b));
     }
-    
+
     public int CompareTo(object obj)
     {
       if (obj == null) return 1;
@@ -268,5 +283,5 @@ public class RuleTable
   }
 }
 
-               
-                                                                                                                                                                             
+
+         

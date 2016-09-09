@@ -5,15 +5,20 @@ open UnityEngine
 
 worldEntity World = {
   Goblin   : Goblin
+  settingslistbigfive : [(string * int * int)] 
+deze lijst wil ik ophalen
 
   Create() = 
-    { Goblin = new Goblin()}  
+    { 
+      Goblin = new Goblin()
+      settinglistbigfive = //hoe jouw var in de proxy hgeet
+    }  
 }
    
 entity Goblin = {
   inherit UnityGoblin
-  settingslistbigfive : [(string * int)] 
   
+  settings : [(string * int)]
     
   //moving right           
   rule Position, IsMovingLegs =    
@@ -25,10 +30,9 @@ entity Goblin = {
     wait Input.GetKey(KeyCode.C)
     yield Position - new Vector3(dt*2.0f, 0.0f, 0.0f), true
       
-  Create() =  
-    let goblin = UnityGoblin.Find()
+  Create(Settings : [(string * int)]) =  
     {
-      settingslistbigfive = goblin.listSettings  
-      UnityGoblin = goblin
+      settings = Settings  
+      UnityGoblin = UnityGoblin.Instantiate()
     }
 }  
