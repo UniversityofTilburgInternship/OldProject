@@ -5,8 +5,7 @@ using Casanova.Prelude;
 
 public class UnityGoblin : MonoBehaviour
 {
-  public List<Tuple<string, int>> listSettings { get; set; }
-
+  public List<Tuple<string, Tuple< int, int>>> listSettings { get; set;}
   public Color Color
   {
     get { return gameObject.GetComponent<Renderer>().material.color; }
@@ -51,8 +50,9 @@ public class UnityGoblin : MonoBehaviour
   }
   void Start()
   {
-   
-  }  
+    //AvatarGenerator settings = gameObject.GetComponent<AvatarGenerator>();
+    //listSettings = settings.SettingsList;
+  }
 
   public Vector3 Position
   {
@@ -74,4 +74,4 @@ public class UnityGoblin : MonoBehaviour
 
 }
 
-                                                
+             
