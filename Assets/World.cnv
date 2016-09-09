@@ -4,24 +4,28 @@ open "UnityEngine.dll"
 open UnityEngine
 
 worldEntity World = {
-  Goblin   : Goblin
-  //settingslistbigfive : [(string * int * int)] 
-  
-  Create() = 
-    { 
-      Goblin = new Goblin()
-      //settinglistbigfive = //hoe jouw var in de proxy hgeet
-    }  
-}
 
+  Goblins   : [Goblin]    
+ 
+  Create() =  
+    let avatar_generator = AvatarGenerator.Find()
+    let goblinList =
+      [for x in [0..avatar_generator.Amount- 1] do
+       for characteristic in avatar_generator.SettingsList do
+       select (Goblin.Create([("rwar", 8)]))]
+    {
+       Goblins = goblinList
+    }    
+}
+ 
 entity Goblin = {
   inherit UnityGoblin
-  
-  //settings : [(string * int)]
+   
+  settings : [(string * int)]
      
   //moving right           
   rule Position, IsMovingLegs =    
-    wait Input.GetKey(KeyCode.Space)
+    wait Input.GetKey(KeyCode.Space) 
     yield Position + new Vector3(dt * 2.0f, 0.0f, 0.0f), true    
 
   //moving left
@@ -29,10 +33,9 @@ entity Goblin = {
     wait Input.GetKey(KeyCode.C)
     yield Position - new Vector3(dt*2.0f, 0.0f, 0.0f), true
       
-  Create() =  
+  Create(Settings : [(string * int)]) =  
     {
-//Settings : [(string * int)]
-      //settings = Settings  
+      settings = Settings  
       UnityGoblin = UnityGoblin.Instantiate()
     }
 }  
