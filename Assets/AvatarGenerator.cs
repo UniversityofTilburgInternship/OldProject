@@ -155,4 +155,4 @@ public class AvatarGenerator : MonoBehaviour
     //amountOfAvatars = avatarGenerator.Amount;
     return avatarGenerator;
   }
-}                 
+}                                               

@@ -15,20 +15,18 @@ public void Start()
 	{
 		AvatarGenerator ___avatar_generator00;
 		___avatar_generator00 = AvatarGenerator.Find();
-		List<Goblin> ___goblinList00;
-		___goblinList00 = (
+		Goblins = (
 
-(Enumerable.Range(0,(1) + (((___avatar_generator00.Amount) - (1)) - (0))).ToList<System.Int32>()).Select(__ContextSymbol0 => new { ___x00 = __ContextSymbol0 })
-.SelectMany(__ContextSymbol1=> (___avatar_generator00.SettingsList).Select(__ContextSymbol2 => new { ___characteristic00 = __ContextSymbol2,
-                                                      prev = __ContextSymbol1 })
-.Select(__ContextSymbol3 => new Goblin((
-
-(new Cons<Casanova.Prelude.Tuple<System.String, System.Int32>>(new Casanova.Prelude.Tuple<System.String, System.Int32>("rwar",8),(new Empty<Casanova.Prelude.Tuple<System.String, System.Int32>>()).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>())).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()))
-.ToList<Goblin>())).ToList<Goblin>();
-		Goblins = ___goblinList00;
+Enumerable.Empty<Goblin>()).ToList<Goblin>();
+		AvatarGen = ___avatar_generator00;
 		
 }
-		public List<Goblin> Goblins;
+		public AvatarGenerator AvatarGen;
+	public List<Goblin> Goblins;
+	public System.Int32 ___x00;
+	public System.Int32 counter20;
+	public Casanova.Prelude.Tuple<System.String,Casanova.Prelude.Tuple<System.Int32,System.Int32>> ___characteristic00;
+	public System.Int32 counter50;
 
 System.DateTime init_time = System.DateTime.Now;
 	public void Update(float dt, World world) {
@@ -37,7 +35,7 @@ var t = System.DateTime.Now;
 		for(int x0 = 0; x0 < Goblins.Count; x0++) { 
 			Goblins[x0].Update(dt, world);
 		}
-
+		this.Rule0(dt, world);
 
 	}
 
@@ -45,6 +43,72 @@ var t = System.DateTime.Now;
 
 
 
+	int s0=-1;
+	public void Rule0(float dt, World world){ switch (s0)
+	{
+
+	case -1:
+	
+	counter20 = -1;
+	if((((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count) == (0)))
+	{
+
+	goto case 0;	}else
+	{
+
+	___x00 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[0];
+	goto case 2;	}
+	case 2:
+	counter20 = ((counter20) + (1));
+	if((((((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count) == (counter20))) || (((counter20) > ((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count)))))
+	{
+
+	goto case 0;	}else
+	{
+
+	___x00 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[counter20];
+	goto case 3;	}
+	case 3:
+	
+	counter50 = -1;
+	if((((AvatarGen.SettingsList).Count) == (0)))
+	{
+
+	s0 = 2;
+return;	}else
+	{
+
+	___characteristic00 = (AvatarGen.SettingsList)[0];
+	goto case 5;	}
+	case 5:
+	counter50 = ((counter50) + (1));
+	if((((((AvatarGen.SettingsList).Count) == (counter50))) || (((counter50) > ((AvatarGen.SettingsList).Count)))))
+	{
+
+	s0 = 2;
+return;	}else
+	{
+
+	___characteristic00 = (AvatarGen.SettingsList)[counter50];
+	goto case 6;	}
+	case 6:
+	Goblins = new Cons<Goblin>(new Goblin((
+
+(new Cons<Casanova.Prelude.Tuple<System.String, System.Int32>>(new Casanova.Prelude.Tuple<System.String, System.Int32>(___characteristic00.Item1,8),(new Empty<Casanova.Prelude.Tuple<System.String, System.Int32>>()).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>())).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()), (Goblins)).ToList<Goblin>();
+	s0 = 5;
+return;
+	case 0:
+	if(!(false))
+	{
+
+	s0 = 0;
+return;	}else
+	{
+
+	s0 = -1;
+return;	}	
+	default: return;}}
+	
 
 
 
@@ -163,4 +227,4 @@ return;
 
 
 }
-}  
+}    
