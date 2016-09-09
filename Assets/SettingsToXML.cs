@@ -10,20 +10,20 @@ public class SettingsToXML : MonoBehaviour
   [Header("Use default (stored) values")]
   public bool defaultValue = true;
 
-  [Header("Extraversion - Introversion")]
-  [Range(-100, 100)]
+  [Header("Extraversion ")]
+  [Range(0, 100)]
   public int Extraversion;
 
-  [Header("Egoism - Altruism")]
-  [Range(-100, 100)]
+  [Header("Egoism ")]
+  [Range(0, 100)]
   public int Egoism;
 
-  [Header("Thouroughness - Chaoticness")]
-  [Range(-100, 100)]
+  [Header("Thouroughness ")]
+  [Range(0, 100)]
   public int Thorougness;
 
-  [Header("Emotional stability - Neuroticism")]
-  [Range(-100, 100)]
+  [Header("Emotional stability ")]
+  [Range(0, 100)]
   public int EmotionalStability;
 
   public List<Tuple<string, int>> SettingsList;
@@ -114,4 +114,4 @@ public class SettingsToXML : MonoBehaviour
 
 
 }
-                                          
+                                                     
