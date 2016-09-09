@@ -4,25 +4,25 @@
       <name>
         Extraversion
       </name>
-      <value>-100</value>
+      <value>66</value>
     </personality>
     <personality>
       <name>
         Egoism
       </name>
-      <value>-91</value>
+      <value>-47</value>
     </personality>
     <personality>
       <name>
         Thoroughness
       </name>
-      <value>-57</value>
+      <value>7</value>
     </personality>
     <personality>
       <name>
         EmotionalStability
       </name>
-      <value>70</value>
+      <value>-52</value>
     </personality>
   </personalities>
 </settings>

@@ -1,21 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Casanova.Prelude;
 
 public class UnityGoblin : MonoBehaviour
 {
-  static Big5Personality big5Personality = new Big5Personality();
-  public static List<int> Big5Personality
-  {
-    get
-    {
-      return big5Personality.toList();
-    }
-    set
-    {
-      big5Personality.setList(value);
-    }
-  }
+  public List<Tuple<string, int>> listSettings { get; set; }
 
   public Color Color
   {
@@ -61,9 +51,9 @@ public class UnityGoblin : MonoBehaviour
   }
   void Start()
   {
-   // SettingsToXML settingsfromXML = new SettingsToXML(); 
-
-  }
+    SettingsToXML settings = gameObject.GetComponent<SettingsToXML>();
+    listSettings = settings.SettingsList;
+  }  
 
   public Vector3 Position
   {
@@ -85,4 +75,4 @@ public class UnityGoblin : MonoBehaviour
 
 }
 
-                                                             
+                                     

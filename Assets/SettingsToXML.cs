@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Xml;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using Casanova.Prelude;
 
 public class SettingsToXML : MonoBehaviour
 {
@@ -24,7 +26,7 @@ public class SettingsToXML : MonoBehaviour
   [Range(-100, 100)]
   public int EmotionalStability;
 
-
+  public List<Tuple<string, int>> SettingsList;
   private string pathToSettings;
 
   // Use this for initialization
@@ -32,7 +34,7 @@ public class SettingsToXML : MonoBehaviour
   {
     pathToSettings = Application.dataPath + "\\Resources\\settings.xml";
 
-    XmlDocument settings = LoadXMLSettings(pathToSettings);
+    XmlDocument settings = loadXMLSettings(pathToSettings);
     if (defaultValue)
     {
 
@@ -75,6 +77,9 @@ public class SettingsToXML : MonoBehaviour
 
       settings.Save(pathToSettings);
     }
+
+    SettingsList = settingsToList();
+
   }
 
   // Update is called once per frame
@@ -87,13 +92,26 @@ public class SettingsToXML : MonoBehaviour
   {
     return Regex.Replace(text, @"\s+", "");
   }
+  List<Tuple<string, int>> settingsToList()
+  {
+    List<Tuple<string, int>> listSettings = new List<Tuple<string, int>>();
+    
+    listSettings.Add(new Tuple<string, int>("Extraversion", Extraversion));
+    listSettings.Add(new Tuple<string, int>("Egoism", Egoism));
+    listSettings.Add(new Tuple<string, int>("Thoroughness", Thorougness));
+    listSettings.Add(new Tuple<string, int>("EmotionalStability", EmotionalStability));
 
-  XmlDocument LoadXMLSettings(string path)
+    return listSettings;
+  }
+
+  XmlDocument loadXMLSettings(string path)
   {
     XmlDocument doc = new XmlDocument();
     doc.Load(path);
 
     return doc;
   }
+
+
 }
-                          
+                                          

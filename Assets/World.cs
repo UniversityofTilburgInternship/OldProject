@@ -45,14 +45,13 @@ public bool JustEntered = true;
 public Goblin()
 	{JustEntered = false;
  frame = World.frame;
-		big5personality = Big5Personality;
-		UnityGoblin = UnityGoblin.Find();
+		UnityGoblin ___goblin00;
+		___goblin00 = UnityGoblin.Find();
+		settingslistbigfive = ___goblin00.listSettings;
+		UnityGoblin = ___goblin00;
 		
 }
-		public System.Collections.Generic.List<System.Int32> Big5Personality{  get { return UnityGoblin.Big5Personality; }
-  set{UnityGoblin.Big5Personality = value; }
- }
-	public UnityEngine.Color Color{  get { return UnityGoblin.Color; }
+		public UnityEngine.Color Color{  get { return UnityGoblin.Color; }
   set{UnityGoblin.Color = value; }
  }
 	public System.Boolean Destroyed{  get { return UnityGoblin.Destroyed; }
@@ -68,7 +67,6 @@ public Goblin()
   set{UnityGoblin.Scale = value; }
  }
 	public UnityGoblin UnityGoblin;
-	public List<System.Int32> big5personality;
 	public System.Boolean enabled{  get { return UnityGoblin.enabled; }
   set{UnityGoblin.enabled = value; }
  }
@@ -79,9 +77,13 @@ public Goblin()
  }
 	public System.Boolean isActiveAndEnabled{  get { return UnityGoblin.isActiveAndEnabled; }
  }
+	public System.Collections.Generic.List<Casanova.Prelude.Tuple<System.String,System.Int32>> listSettings{  get { return UnityGoblin.listSettings; }
+  set{UnityGoblin.listSettings = value; }
+ }
 	public System.String name{  get { return UnityGoblin.name; }
   set{UnityGoblin.name = value; }
  }
+	public List<Casanova.Prelude.Tuple<System.String, System.Int32>> settingslistbigfive;
 	public System.String tag{  get { return UnityGoblin.tag; }
   set{UnityGoblin.tag = value; }
  }
@@ -148,4 +150,4 @@ return;
 
 
 }
-}           
+}    
