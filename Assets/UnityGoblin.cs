@@ -1,86 +1,77 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Casanova.Prelude;
 
 public class UnityGoblin : MonoBehaviour
 {
-    static Big5Personality big5Personality = new Big5Personality();
-    public static List<int> Big5Personality
+  public List<Tuple<string, int>> listSettings { get; set; }
+
+  public Color Color
+  {
+    get { return gameObject.GetComponent<Renderer>().material.color; }
+    set { gameObject.GetComponent<Renderer>().material.color = value; }
+  }
+
+  public bool IsMovingLegs
+  {
+    get { return gameObject.GetComponent<Animation>(); }
+    set
     {
-        get
-        {
-            return big5Personality.toList();
-        }
-        set
-        {
-            big5Personality.setList(value);
-        }
-        
+      if (value && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("walk"))
+      {
+
+        gameObject.GetComponent<Animator>().Play("cast");
+      }
     }
+  }
 
-
-
-    public Color Color
+  public Vector3 Scale
+  {
+    get
     {
-        get { return gameObject.GetComponent<Renderer>().material.color; }
-        set { gameObject.GetComponent<Renderer>().material.color = value; }
+      return gameObject.transform.localScale;
     }
-
-    public bool IsMovingLegs
+    set
     {
-        get { return gameObject.GetComponent<Animation>(); }
-        set
-        {
-            if (value && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("walk"))
-            {
-
-                gameObject.GetComponent<Animator>().Play("cast");
-            }
-        }
+      gameObject.transform.localScale = value;
     }
+  }
 
-    public Vector3 Scale
+  bool destroyed = false;
+  public bool Destroyed
+  {
+    get { return destroyed; }
+    set
     {
-        get
-        {
-            return gameObject.transform.localScale;
-        }
-        set
-        {
-            gameObject.transform.localScale = value;
-        }
+      destroyed = value;
+      if (destroyed)
+        GameObject.Destroy(gameObject);
     }
-    
-    bool destroyed = false;
-    public bool Destroyed
-    {
-        get { return destroyed; }
-        set
-        {
-            destroyed = value;
-            if (destroyed)
-                GameObject.Destroy(gameObject);
-        }
-    }
+  }
+  void Start()
+  {
+   
+  }  
 
-    public Vector3 Position
-    {
-        get { return gameObject.transform.position; }
-        set { gameObject.transform.position = value; }
-    }
+  public Vector3 Position
+  {
+    get { return gameObject.transform.position; }
+    set { gameObject.transform.position = value; }
+  }
 
-    public static UnityGoblin Instantiate()
-    {
-        var _object = GameObject.Instantiate(Resources.Load("Goblin"), Random.insideUnitSphere, Quaternion.identity) as GameObject;
-        return _object.GetComponent<UnityGoblin>();
-    }
+  public static UnityGoblin Instantiate()
+  {
+    var _object = GameObject.Instantiate(Resources.Load("Goblin"), Random.insideUnitSphere, Quaternion.identity) as GameObject;
+    return _object.GetComponent<UnityGoblin>();
+  }
 
 
-    public static UnityGoblin Find()
-    {
-        return GameObject.Find("/Goblin").GetComponent<UnityGoblin>();
-    }
+  public static UnityGoblin Find()
+  {
+    return GameObject.Find("/Goblin").GetComponent<UnityGoblin>();
+  }
 
 }
 
-                                                            
+                                               

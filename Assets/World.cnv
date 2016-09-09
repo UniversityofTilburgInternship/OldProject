@@ -5,18 +5,22 @@ open UnityEngine
 
 worldEntity World = {
   Goblin   : Goblin
-  
 
   Create() = 
     { Goblin = new Goblin()}  
 }
+<<<<<<< HEAD
   
+=======
+   
+>>>>>>> 72994cc738a1dfabd6c79d7bca3a6bc1f3afd5ee
 entity Goblin = {
   inherit UnityGoblin
-  big5personality : [int] 
-
-  //moving right
-  rule Position, IsMovingLegs =
+  settingslistbigfive : [(string * int)] 
+  
+    
+  //moving right           
+  rule Position, IsMovingLegs =    
     wait Input.GetKey(KeyCode.Space)
     yield Position + new Vector3(dt * 2.0f, 0.0f, 0.0f), true    
 
@@ -24,11 +28,11 @@ entity Goblin = {
   rule Position, IsMovingLegs =
     wait Input.GetKey(KeyCode.C)
     yield Position - new Vector3(dt*2.0f, 0.0f, 0.0f), true
-     
-  Create() =  
-    {
-      big5personality = Big5Personality 
-      UnityGoblin = UnityGoblin.Find()
       
+  Create() =  
+    let goblin = UnityGoblin.Find()
+    {
+      settingslistbigfive = goblin.listSettings  
+      UnityGoblin = goblin
     }
 }  
