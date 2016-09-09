@@ -5,16 +5,20 @@ open UnityEngine
 
 worldEntity World = {
 
-  Goblins   : [Goblin]    
+  Goblins   : [Goblin]   
+  AvatarGen : AvatarGenerator 
  
+  rule Goblins =
+    for x in [0..AvatarGen.Amount - 1] do
+       for characteristic in AvatarGen.SettingsList do
+          yield (Goblin.Create([(characteristic.Item1, 8)])) :: Goblins  
+    wait false
+
   Create() =  
     let avatar_generator = AvatarGenerator.Find()
-    let goblinList =
-      [for x in [0..avatar_generator.Amount- 1] do
-       for characteristic in avatar_generator.SettingsList do
-       select (Goblin.Create([("rwar", 8)]))]
     {
-       Goblins = goblinList
+       AvatarGen = avatar_generator 
+       Goblins = []
     }    
 }
  
