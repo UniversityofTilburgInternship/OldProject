@@ -8,12 +8,22 @@ worldEntity World = {
   Goblins   : [Goblin]   
   AvatarGen : AvatarGenerator 
  
+    //rule Goblins =
+   //   for x in [0..AvatarGen.Amount - 1] do
+     //   for characteristic in AvatarGen.SettingsList do
+    //        yield (Goblin.Create([(characteristic.Item1, 8)])) :: Goblins  
+ //     wait false
+
   rule Goblins =
     for x in [0..AvatarGen.Amount - 1] do
-       for characteristic in AvatarGen.SettingsList do
-          yield (Goblin.Create([(characteristic.Item1, 8)])) :: Goblins  
+      yield (Goblin.Create(
+              [for characteristic in AvatarGen.SettingsList do 
+              select (characteristic.Item1, 
+                    Random.Range(characteristic.Item2.Item1, 
+                    characteristic.Item2.Item2))]
+            )) :: Goblins  
     wait false
-
+  
   Create() =  
     let avatar_generator = AvatarGenerator.Find()
     {
@@ -21,16 +31,17 @@ worldEntity World = {
        Goblins = []
     }    
 }
+
+
  
-entity Goblin = {
-  inherit UnityGoblin
-   
+entity Goblin = { 
+  inherit UnityGoblin 
   settings : [(string * int)]
      
   //moving right           
   rule Position, IsMovingLegs =    
     wait Input.GetKey(KeyCode.Space) 
-    yield Position + new Vector3(dt * 2.0f, 0.0f, 0.0f), true    
+    yield Position + new Vector3(dt *2.0f, 0.0f, 0.0f), true    
 
   //moving left
   rule Position, IsMovingLegs =
@@ -43,3 +54,5 @@ entity Goblin = {
       UnityGoblin = UnityGoblin.Instantiate()
     }
 }  
+
+

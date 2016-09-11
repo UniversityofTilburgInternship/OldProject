@@ -25,8 +25,6 @@ Enumerable.Empty<Goblin>()).ToList<Goblin>();
 	public List<Goblin> Goblins;
 	public System.Int32 ___x00;
 	public System.Int32 counter20;
-	public Casanova.Prelude.Tuple<System.String,Casanova.Prelude.Tuple<System.Int32,System.Int32>> ___characteristic00;
-	public System.Int32 counter50;
 
 System.DateTime init_time = System.DateTime.Now;
 	public void Update(float dt, World world) {
@@ -69,33 +67,12 @@ var t = System.DateTime.Now;
 	___x00 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[counter20];
 	goto case 3;	}
 	case 3:
-	
-	counter50 = -1;
-	if((((AvatarGen.SettingsList).Count) == (0)))
-	{
-
-	s0 = 2;
-return;	}else
-	{
-
-	___characteristic00 = (AvatarGen.SettingsList)[0];
-	goto case 5;	}
-	case 5:
-	counter50 = ((counter50) + (1));
-	if((((((AvatarGen.SettingsList).Count) == (counter50))) || (((counter50) > ((AvatarGen.SettingsList).Count)))))
-	{
-
-	s0 = 2;
-return;	}else
-	{
-
-	___characteristic00 = (AvatarGen.SettingsList)[counter50];
-	goto case 6;	}
-	case 6:
 	Goblins = new Cons<Goblin>(new Goblin((
 
-(new Cons<Casanova.Prelude.Tuple<System.String, System.Int32>>(new Casanova.Prelude.Tuple<System.String, System.Int32>(___characteristic00.Item1,8),(new Empty<Casanova.Prelude.Tuple<System.String, System.Int32>>()).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>())).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()), (Goblins)).ToList<Goblin>();
-	s0 = 5;
+(AvatarGen.SettingsList).Select(__ContextSymbol1 => new { ___characteristic00 = __ContextSymbol1 })
+.Select(__ContextSymbol2 => new Casanova.Prelude.Tuple<System.String, System.Int32>(__ContextSymbol2.___characteristic00.Item1,UnityEngine.Random.Range(__ContextSymbol2.___characteristic00.Item2.Item1,__ContextSymbol2.___characteristic00.Item2.Item2)))
+.ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()), (Goblins)).ToList<Goblin>();
+	s0 = 2;
 return;
 	case 0:
 	if(!(false))
@@ -227,4 +204,4 @@ return;
 
 
 }
-}     
+}  

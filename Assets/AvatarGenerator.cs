@@ -40,6 +40,7 @@ public class AvatarGenerator : MonoBehaviour
 
     public List<Tuple<string, Tuple<int, int>>> SettingsList;
     private string pathToSettings;
+  
 
     // Use this for initialization
     void Start()
@@ -156,4 +157,4 @@ public class AvatarGenerator : MonoBehaviour
         //amountOfAvatars = avatarGenerator.Amount;
         return avatarGenerator;
     }
-} 
+}                                                                                                                                                         
