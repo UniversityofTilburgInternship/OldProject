@@ -4,29 +4,29 @@
       <name>
         Extraversion
       </name>
-      <minvalue>0</minvalue>
-      <maxvalue>0</maxvalue>
+      <minvalue>5</minvalue>
+      <maxvalue>23</maxvalue>
     </personality>
     <personality>
       <name>
         Egoism
       </name>
-      <minvalue>0</minvalue>
-      <maxvalue>0</maxvalue>
+      <minvalue>8</minvalue>
+      <maxvalue>56</maxvalue>
     </personality>
     <personality>
       <name>
         Thoroughness
       </name>
-      <minvalue>0</minvalue>
-      <maxvalue>0</maxvalue>
+      <minvalue>10</minvalue>
+      <maxvalue>52</maxvalue>
     </personality>
     <personality>
       <name>
         EmotionalStability
       </name>
-      <minvalue>0</minvalue>
-      <maxvalue>0</maxvalue>
+      <minvalue>57</minvalue>
+      <maxvalue>100</maxvalue>
     </personality>
   </personalities>
 </settings>

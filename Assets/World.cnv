@@ -23,6 +23,12 @@ worldEntity World = {
                     characteristic.Item2.Item2))]
             )) :: Goblins  
     wait false
+ 
+  rule Goblins = 
+    for goblin in Goblins do
+      for personality in goblin.settings do
+         AvatarGenerator.Log(personality.Item1) 
+    yield Goblins
   
   Create() =  
     let avatar_generator = AvatarGenerator.Find()

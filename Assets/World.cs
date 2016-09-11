@@ -23,8 +23,12 @@ Enumerable.Empty<Goblin>()).ToList<Goblin>();
 }
 		public AvatarGenerator AvatarGen;
 	public List<Goblin> Goblins;
-	public System.Int32 ___x00;
+	public Goblin ___goblin00;
 	public System.Int32 counter20;
+	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personality00;
+	public System.Int32 counter50;
+	public System.Int32 ___x10;
+	public System.Int32 counter21;
 
 System.DateTime init_time = System.DateTime.Now;
 	public void Update(float dt, World world) {
@@ -34,7 +38,7 @@ var t = System.DateTime.Now;
 			Goblins[x0].Update(dt, world);
 		}
 		this.Rule0(dt, world);
-
+		this.Rule1(dt, world);
 	}
 
 
@@ -48,45 +52,103 @@ var t = System.DateTime.Now;
 	case -1:
 	
 	counter20 = -1;
+	if((((Goblins).Count) == (0)))
+	{
+
+	goto case 0;	}else
+	{
+
+	___goblin00 = (Goblins)[0];
+	goto case 2;	}
+	case 2:
+	counter20 = ((counter20) + (1));
+	if((((((Goblins).Count) == (counter20))) || (((counter20) > ((Goblins).Count)))))
+	{
+
+	goto case 0;	}else
+	{
+
+	___goblin00 = (Goblins)[counter20];
+	goto case 3;	}
+	case 3:
+	
+	counter50 = -1;
+	if((((___goblin00.settings).Count) == (0)))
+	{
+
+	s0 = 2;
+return;	}else
+	{
+
+	___personality00 = (___goblin00.settings)[0];
+	goto case 5;	}
+	case 5:
+	counter50 = ((counter50) + (1));
+	if((((((___goblin00.settings).Count) == (counter50))) || (((counter50) > ((___goblin00.settings).Count)))))
+	{
+
+	s0 = 2;
+return;	}else
+	{
+
+	___personality00 = (___goblin00.settings)[counter50];
+	goto case 6;	}
+	case 6:
+	AvatarGenerator.Log(___personality00.Item1);
+	s0 = 5;
+return;
+	case 0:
+	Goblins = Goblins;
+	s0 = -1;
+return;	
+	default: return;}}
+	
+
+	int s1=-1;
+	public void Rule1(float dt, World world){ switch (s1)
+	{
+
+	case -1:
+	
+	counter21 = -1;
 	if((((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count) == (0)))
 	{
 
 	goto case 0;	}else
 	{
 
-	___x00 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[0];
+	___x10 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[0];
 	goto case 2;	}
 	case 2:
-	counter20 = ((counter20) + (1));
-	if((((((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count) == (counter20))) || (((counter20) > ((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count)))))
+	counter21 = ((counter21) + (1));
+	if((((((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count) == (counter21))) || (((counter21) > ((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count)))))
 	{
 
 	goto case 0;	}else
 	{
 
-	___x00 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[counter20];
+	___x10 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[counter21];
 	goto case 3;	}
 	case 3:
 	Goblins = new Cons<Goblin>(new Goblin((
 
-(AvatarGen.SettingsList).Select(__ContextSymbol1 => new { ___characteristic00 = __ContextSymbol1 })
-.Select(__ContextSymbol2 => new Casanova.Prelude.Tuple<System.String, System.Int32>(__ContextSymbol2.___characteristic00.Item1,UnityEngine.Random.Range(__ContextSymbol2.___characteristic00.Item2.Item1,__ContextSymbol2.___characteristic00.Item2.Item2)))
+(AvatarGen.SettingsList).Select(__ContextSymbol1 => new { ___characteristic10 = __ContextSymbol1 })
+.Select(__ContextSymbol2 => new Casanova.Prelude.Tuple<System.String, System.Int32>(__ContextSymbol2.___characteristic10.Item1,UnityEngine.Random.Range(__ContextSymbol2.___characteristic10.Item2.Item1,__ContextSymbol2.___characteristic10.Item2.Item2)))
 .ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()), (Goblins)).ToList<Goblin>();
-	s0 = 2;
+	s1 = 2;
 return;
 	case 0:
 	if(!(false))
 	{
 
-	s0 = 0;
+	s1 = 0;
 return;	}else
 	{
 
-	s0 = -1;
+	s1 = -1;
 return;	}	
 	default: return;}}
 	
-
 
 
 
@@ -204,4 +266,4 @@ return;
 
 
 }
-}  
+}   
