@@ -101,11 +101,17 @@ private List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings;
 public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings)
 	{JustEntered = false;
  frame = World.frame;
+		UnityGoblin ___goblin00;
+		___goblin00 = UnityGoblin.Instantiate();
+		UnityEngine.Vector3 ___randomvector00;
+		___randomvector00 = new UnityEngine.Vector3(UnityEngine.Random.Range((___goblin00.Position.x) + (10f),(___goblin00.Position.x) - (20f)),___goblin00.Position.y,UnityEngine.Random.Range((___goblin00.Position.z) + (10f),(___goblin00.Position.z) - (20f)));
 		settings = Settings;
 		personalityValue = 0;
 		personalityIndex = 0;
 		normalActivity = false;
-		UnityGoblin = UnityGoblin.Instantiate();
+		newPosition = ___randomvector00;
+		Velocity = Vector3.zero;
+		UnityGoblin = ___goblin00;
 		
 }
 		public UnityEngine.Color Color{  get { return UnityGoblin.Color; }
@@ -126,6 +132,7 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
   set{UnityGoblin.ToProxyCode = value; }
  }
 	public UnityGoblin UnityGoblin;
+	public UnityEngine.Vector3 Velocity;
 	public System.Collections.Generic.List<PersonalityAnimation> animations{  get { return UnityGoblin.animations; }
   set{UnityGoblin.animations = value; }
  }
@@ -145,6 +152,7 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
 	public System.String name{  get { return UnityGoblin.name; }
   set{UnityGoblin.name = value; }
  }
+	public UnityEngine.Vector3 newPosition;
 	public System.Boolean normalActivity;
 	public System.Int32 personalityIndex;
 	public System.Int32 personalityValue;
@@ -157,11 +165,12 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
 	public System.Boolean useGUILayout{  get { return UnityGoblin.useGUILayout; }
   set{UnityGoblin.useGUILayout = value; }
  }
-	public System.Int32 ___chance_factor00;
+	public UnityEngine.Vector3 ___dir010;
+	public System.Int32 ___chance_factor20;
 	public System.Single count_down1;
-	public System.Int32 ___randomPersonalityIndex10;
-	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personalityValue10;
-	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personalValue10;
+	public System.Int32 ___randomPersonalityIndex30;
+	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personalityValue30;
+	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personalValue30;
 	public System.Single count_down2;
 	public void Update(float dt, World world) {
 frame = World.frame;
@@ -170,6 +179,8 @@ frame = World.frame;
 		this.Rule1(dt, world);
 		this.Rule2(dt, world);
 		this.Rule3(dt, world);
+		this.Rule4(dt, world);
+		this.Rule5(dt, world);
 	}
 
 
@@ -181,37 +192,9 @@ frame = World.frame;
 	{
 
 	case -1:
-	___chance_factor00 = 1;
-	if(((((personalityValue) / (UnityEngine.Random.Range(1,100)))) > (___chance_factor00)))
-	{
-
-	goto case 7;	}else
-	{
-
-	goto case 8;	}
-	case 7:
-	UnityGoblin.Animate(personalityIndex);
-	normalActivity = true;
-	s0 = 5;
-return;
-	case 8:
-	normalActivity = false;
-	s0 = 5;
-return;
-	case 5:
-	count_down1 = 10f;
-	goto case 6;
-	case 6:
-	if(((count_down1) > (0f)))
-	{
-
-	count_down1 = ((count_down1) - (dt));
-	s0 = 6;
-return;	}else
-	{
-
+	Position = ((Position) + (((Velocity) * (dt))));
 	s0 = -1;
-return;	}	
+return;	
 	default: return;}}
 	
 
@@ -220,40 +203,25 @@ return;	}
 	{
 
 	case -1:
-	___randomPersonalityIndex10 = UnityEngine.Random.Range(0,(settings.Count) * (2));
-	if(((___randomPersonalityIndex10) > (((settings.Count) - (1)))))
-	{
-
-	goto case 16;	}else
-	{
-
-	goto case 17;	}
-	case 16:
-	___personalityValue10 = (settings)[((___randomPersonalityIndex10) - (settings.Count))];
-	personalityValue = ((100) - (___personalityValue10.Item2));
-	personalityIndex = ___randomPersonalityIndex10;
-	s1 = 14;
+	___dir010 = ((newPosition) - (Position));
+	Position = Position;
+	Velocity = ___dir010.normalized;
+	s1 = 1;
 return;
-	case 17:
-	___personalValue10 = (settings)[___randomPersonalityIndex10];
-	personalityValue = ___personalValue10.Item2;
-	personalityIndex = ___randomPersonalityIndex10;
-	s1 = 14;
-return;
-	case 14:
-	count_down2 = 10f;
-	goto case 15;
-	case 15:
-	if(((count_down2) > (0f)))
+	case 1:
+	if(!(((0f) > (UnityEngine.Vector3.Dot(___dir010,(newPosition) - (Position))))))
 	{
 
-	count_down2 = ((count_down2) - (dt));
-	s1 = 15;
+	s1 = 1;
 return;	}else
 	{
 
+	goto case 0;	}
+	case 0:
+	Position = newPosition;
+	Velocity = Vector3.zero;
 	s1 = -1;
-return;	}	
+return;	
 	default: return;}}
 	
 
@@ -262,19 +230,37 @@ return;	}
 	{
 
 	case -1:
-	if(!(UnityEngine.Input.GetKey(KeyCode.C)))
+	___chance_factor20 = 1;
+	if(((((personalityValue) / (UnityEngine.Random.Range(1,100)))) > (___chance_factor20)))
 	{
 
-	s2 = -1;
+	goto case 6;	}else
+	{
+
+	goto case 7;	}
+	case 6:
+	UnityGoblin.Animate(personalityIndex);
+	normalActivity = true;
+	s2 = 4;
+return;
+	case 7:
+	normalActivity = false;
+	s2 = 4;
+return;
+	case 4:
+	count_down1 = 10f;
+	goto case 5;
+	case 5:
+	if(((count_down1) > (0f)))
+	{
+
+	count_down1 = ((count_down1) - (dt));
+	s2 = 5;
 return;	}else
 	{
 
-	goto case 0;	}
-	case 0:
-	Position = ((Position) - (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
-	CurrentAnimation = GoblinAnimation.Walk;
 	s2 = -1;
-return;	
+return;	}	
 	default: return;}}
 	
 
@@ -283,10 +269,73 @@ return;
 	{
 
 	case -1:
-	if(!(UnityEngine.Input.GetKey(KeyCode.Space)))
+	___randomPersonalityIndex30 = UnityEngine.Random.Range(0,(settings.Count) * (2));
+	if(((___randomPersonalityIndex30) > (((settings.Count) - (1)))))
+	{
+
+	goto case 15;	}else
+	{
+
+	goto case 16;	}
+	case 15:
+	___personalityValue30 = (settings)[((___randomPersonalityIndex30) - (settings.Count))];
+	personalityValue = ((100) - (___personalityValue30.Item2));
+	personalityIndex = ___randomPersonalityIndex30;
+	s3 = 13;
+return;
+	case 16:
+	___personalValue30 = (settings)[___randomPersonalityIndex30];
+	personalityValue = ___personalValue30.Item2;
+	personalityIndex = ___randomPersonalityIndex30;
+	s3 = 13;
+return;
+	case 13:
+	count_down2 = 10f;
+	goto case 14;
+	case 14:
+	if(((count_down2) > (0f)))
+	{
+
+	count_down2 = ((count_down2) - (dt));
+	s3 = 14;
+return;	}else
 	{
 
 	s3 = -1;
+return;	}	
+	default: return;}}
+	
+
+	int s4=-1;
+	public void Rule4(float dt, World world){ switch (s4)
+	{
+
+	case -1:
+	if(!(UnityEngine.Input.GetKey(KeyCode.C)))
+	{
+
+	s4 = -1;
+return;	}else
+	{
+
+	goto case 0;	}
+	case 0:
+	Position = ((Position) - (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
+	CurrentAnimation = GoblinAnimation.Walk;
+	s4 = -1;
+return;	
+	default: return;}}
+	
+
+	int s5=-1;
+	public void Rule5(float dt, World world){ switch (s5)
+	{
+
+	case -1:
+	if(!(UnityEngine.Input.GetKey(KeyCode.Space)))
+	{
+
+	s5 = -1;
 return;	}else
 	{
 
@@ -294,7 +343,7 @@ return;	}else
 	case 0:
 	Position = ((Position) + (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
 	CurrentAnimation = GoblinAnimation.Run;
-	s3 = -1;
+	s5 = -1;
 return;	
 	default: return;}}
 	
@@ -304,4 +353,4 @@ return;
 
 
 }
-}    
+}         
