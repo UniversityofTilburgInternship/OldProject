@@ -64,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AvatarGenerator.cs" />
-    <Compile Include="Assets\Big5Personality.cs" />
     <Compile Include="Assets\C&amp;C_Pack\Goblin_rouge\Script\Goblin_ro_ctrl.cs" />
     <Compile Include="Assets\Prelude.cs" />
     <Compile Include="Assets\UnityGoblin.cs" />

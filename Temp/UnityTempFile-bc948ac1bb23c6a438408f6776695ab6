@@ -84,7 +84,6 @@
 -define:UNITY_TEAM_LICENSE
 -define:ENABLE_VSTU
 Assets/AvatarGenerator.cs
-Assets/Big5Personality.cs
 "Assets/C&C_Pack/Goblin_rouge/Script/Goblin_ro_ctrl.cs"
 Assets/Prelude.cs
 Assets/UnityGoblin.cs
