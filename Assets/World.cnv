@@ -10,7 +10,7 @@ worldEntity World = {
  
     //rule Goblins =
    //   for x in [0..AvatarGen.Amount - 1] do
-     //   for characteristic in AvatarGen.SettingsList do
+     //   for characteristic in Avatar Gen.SettingsList do
     //        yield (Goblin.Create([(characteristic.Item1, 8)])) :: Goblins  
  //     wait false
 
@@ -23,12 +23,6 @@ worldEntity World = {
                     characteristic.Item2.Item2))]
             )) :: Goblins  
     wait false
- 
-  rule Goblins = 
-    for goblin in Goblins do
-      for personality in goblin.settings do
-         AvatarGenerator.Log(personality.Item1) 
-    yield Goblins
   
   Create() =  
     let avatar_generator = AvatarGenerator.Find()
@@ -43,6 +37,8 @@ worldEntity World = {
 entity Goblin = { 
   inherit UnityGoblin 
   settings : [(string * int)]
+  normalActivity : bool
+  ref personalityValue : int
      
   //moving right           
   rule Position, IsMovingLegs =    
@@ -53,12 +49,31 @@ entity Goblin = {
   rule Position, IsMovingLegs =
     wait Input.GetKey(KeyCode.C)
     yield Position - new Vector3(dt*2.0f, 0.0f, 0.0f), true
-      
+
+  rule personalityValue = 
+    let randomPersonalityIndex = Random.Range(0, settings.Count * 2)
+    if (randomPersonalityIndex > (settings.Count)-1) then
+      let personalityValue = settings.[randomPersonalityIndex - settings.Count]
+      yield 100 - personalityValue.Item2
+    else
+      let personalValue =  settings.[randomPersonalityIndex]
+      yield personalValue.Item2
+
+  rule normalActivity =
+    let chance_factor = 1
+    if ((personalityValue / Random.Range(1,100)) > chance_factor) then
+      AvatarGenerator.Log(true)
+    else
+      AvatarGenerator.Log(false)
+    yield true    
+    wait 10.0f
+    
+
   Create(Settings : [(string * int)]) =  
     {
-      settings = Settings  
+      personalityValue = 0
+      normalActivity = false
+      settings = Settings
       UnityGoblin = UnityGoblin.Instantiate()
     }
-}  
-
-
+}
