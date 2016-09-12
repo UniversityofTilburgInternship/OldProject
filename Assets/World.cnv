@@ -7,7 +7,6 @@ worldEntity World = {
 
   Goblins   : [Goblin]   
   AvatarGen : AvatarGenerator 
- 
     //rule Goblins =
    //   for x in [0..AvatarGen.Amount - 1] do
      //   for characteristic in Avatar Gen.SettingsList do
@@ -39,12 +38,12 @@ entity Goblin = {
   settings : [(string * int)]
   normalActivity : bool
   ref personalityValue : int
-     
+
   //moving right           
   rule Position, CurrentAnimation =     
     wait Input.GetKey(KeyCode.Space) 
     yield Position + new Vector3(dt *2.0f, 0.0f, 0.0f), GoblinAnimation.Run
-
+ 
   //moving left
   rule Position, CurrentAnimation =
     wait Input.GetKey(KeyCode.C)
