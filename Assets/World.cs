@@ -23,12 +23,8 @@ Enumerable.Empty<Goblin>()).ToList<Goblin>();
 }
 		public AvatarGenerator AvatarGen;
 	public List<Goblin> Goblins;
-	public Goblin ___goblin00;
+	public System.Int32 ___x00;
 	public System.Int32 counter20;
-	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personality00;
-	public System.Int32 counter50;
-	public System.Int32 ___x10;
-	public System.Int32 counter21;
 
 System.DateTime init_time = System.DateTime.Now;
 	public void Update(float dt, World world) {
@@ -38,7 +34,7 @@ var t = System.DateTime.Now;
 			Goblins[x0].Update(dt, world);
 		}
 		this.Rule0(dt, world);
-		this.Rule1(dt, world);
+
 	}
 
 
@@ -52,103 +48,45 @@ var t = System.DateTime.Now;
 	case -1:
 	
 	counter20 = -1;
-	if((((Goblins).Count) == (0)))
-	{
-
-	goto case 0;	}else
-	{
-
-	___goblin00 = (Goblins)[0];
-	goto case 2;	}
-	case 2:
-	counter20 = ((counter20) + (1));
-	if((((((Goblins).Count) == (counter20))) || (((counter20) > ((Goblins).Count)))))
-	{
-
-	goto case 0;	}else
-	{
-
-	___goblin00 = (Goblins)[counter20];
-	goto case 3;	}
-	case 3:
-	
-	counter50 = -1;
-	if((((___goblin00.settings).Count) == (0)))
-	{
-
-	s0 = 2;
-return;	}else
-	{
-
-	___personality00 = (___goblin00.settings)[0];
-	goto case 5;	}
-	case 5:
-	counter50 = ((counter50) + (1));
-	if((((((___goblin00.settings).Count) == (counter50))) || (((counter50) > ((___goblin00.settings).Count)))))
-	{
-
-	s0 = 2;
-return;	}else
-	{
-
-	___personality00 = (___goblin00.settings)[counter50];
-	goto case 6;	}
-	case 6:
-	AvatarGenerator.Log(___personality00.Item1);
-	s0 = 5;
-return;
-	case 0:
-	Goblins = Goblins;
-	s0 = -1;
-return;	
-	default: return;}}
-	
-
-	int s1=-1;
-	public void Rule1(float dt, World world){ switch (s1)
-	{
-
-	case -1:
-	
-	counter21 = -1;
 	if((((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count) == (0)))
 	{
 
 	goto case 0;	}else
 	{
 
-	___x10 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[0];
+	___x00 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[0];
 	goto case 2;	}
 	case 2:
-	counter21 = ((counter21) + (1));
-	if((((((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count) == (counter21))) || (((counter21) > ((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count)))))
+	counter20 = ((counter20) + (1));
+	if((((((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count) == (counter20))) || (((counter20) > ((Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>()).Count)))))
 	{
 
 	goto case 0;	}else
 	{
 
-	___x10 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[counter21];
+	___x00 = (Enumerable.Range(0,((1) + (((((AvatarGen.Amount) - (1))) - (0))))).ToList<System.Int32>())[counter20];
 	goto case 3;	}
 	case 3:
 	Goblins = new Cons<Goblin>(new Goblin((
 
-(AvatarGen.SettingsList).Select(__ContextSymbol1 => new { ___characteristic10 = __ContextSymbol1 })
-.Select(__ContextSymbol2 => new Casanova.Prelude.Tuple<System.String, System.Int32>(__ContextSymbol2.___characteristic10.Item1,UnityEngine.Random.Range(__ContextSymbol2.___characteristic10.Item2.Item1,__ContextSymbol2.___characteristic10.Item2.Item2)))
+(AvatarGen.SettingsList).Select(__ContextSymbol1 => new { ___characteristic00 = __ContextSymbol1 })
+.Select(__ContextSymbol2 => new Casanova.Prelude.Tuple<System.String, System.Int32>(__ContextSymbol2.___characteristic00.Item1,UnityEngine.Random.Range(__ContextSymbol2.___characteristic00.Item2.Item1,__ContextSymbol2.___characteristic00.Item2.Item2)))
 .ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()).ToList<Casanova.Prelude.Tuple<System.String, System.Int32>>()), (Goblins)).ToList<Goblin>();
-	s1 = 2;
+	s0 = 2;
 return;
 	case 0:
 	if(!(false))
 	{
 
-	s1 = 0;
+	s0 = 0;
 return;	}else
 	{
 
-	s1 = -1;
+	s0 = -1;
 return;	}	
 	default: return;}}
 	
+
 
 
 
@@ -164,6 +102,8 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
 	{JustEntered = false;
  frame = World.frame;
 		settings = Settings;
+		personalityValue = 0;
+		normalActivity = false;
 		UnityGoblin = UnityGoblin.Instantiate();
 		
 }
@@ -199,6 +139,8 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
 	public System.String name{  get { return UnityGoblin.name; }
   set{UnityGoblin.name = value; }
  }
+	public System.Boolean normalActivity;
+	public System.Int32 personalityValue;
 	public List<Casanova.Prelude.Tuple<System.String, System.Int32>> settings;
 	public System.String tag{  get { return UnityGoblin.tag; }
   set{UnityGoblin.tag = value; }
@@ -208,11 +150,18 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
 	public System.Boolean useGUILayout{  get { return UnityGoblin.useGUILayout; }
   set{UnityGoblin.useGUILayout = value; }
  }
+	public System.Int32 ___chance_factor00;
+	public System.Single count_down1;
+	public System.Int32 ___randomPersonalityIndex10;
+	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personalityValue10;
+	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personalValue10;
 	public void Update(float dt, World world) {
 frame = World.frame;
 
 		this.Rule0(dt, world);
 		this.Rule1(dt, world);
+		this.Rule2(dt, world);
+		this.Rule3(dt, world);
 	}
 
 
@@ -224,19 +173,40 @@ frame = World.frame;
 	{
 
 	case -1:
-	if(!(UnityEngine.Input.GetKey(KeyCode.C)))
+	___chance_factor00 = 1;
+	if(((((personalityValue) / (UnityEngine.Random.Range(1,100)))) > (___chance_factor00)))
 	{
 
-	s0 = -1;
+	goto case 3;	}else
+	{
+
+	goto case 4;	}
+	case 3:
+	AvatarGenerator.Log(true);
+	s0 = 2;
+return;
+	case 4:
+	AvatarGenerator.Log(false);
+	s0 = 2;
+return;
+	case 2:
+	normalActivity = true;
+	s0 = 0;
+return;
+	case 0:
+	count_down1 = 10f;
+	goto case 1;
+	case 1:
+	if(((count_down1) > (0f)))
+	{
+
+	count_down1 = ((count_down1) - (dt));
+	s0 = 1;
 return;	}else
 	{
 
-	goto case 0;	}
-	case 0:
-	Position = ((Position) - (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
-	IsMovingLegs = true;
 	s0 = -1;
-return;	
+return;	}	
 	default: return;}}
 	
 
@@ -245,10 +215,57 @@ return;
 	{
 
 	case -1:
+	___randomPersonalityIndex10 = UnityEngine.Random.Range(0,(settings.Count) * (2));
+	if(((___randomPersonalityIndex10) > (((settings.Count) - (1)))))
+	{
+
+	goto case 9;	}else
+	{
+
+	goto case 10;	}
+	case 9:
+	___personalityValue10 = (settings)[((___randomPersonalityIndex10) - (settings.Count))];
+	personalityValue = ((100) - (___personalityValue10.Item2));
+	s1 = -1;
+return;
+	case 10:
+	___personalValue10 = (settings)[___randomPersonalityIndex10];
+	personalityValue = ___personalValue10.Item2;
+	s1 = -1;
+return;	
+	default: return;}}
+	
+
+	int s2=-1;
+	public void Rule2(float dt, World world){ switch (s2)
+	{
+
+	case -1:
+	if(!(UnityEngine.Input.GetKey(KeyCode.C)))
+	{
+
+	s2 = -1;
+return;	}else
+	{
+
+	goto case 0;	}
+	case 0:
+	Position = ((Position) - (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
+	IsMovingLegs = true;
+	s2 = -1;
+return;	
+	default: return;}}
+	
+
+	int s3=-1;
+	public void Rule3(float dt, World world){ switch (s3)
+	{
+
+	case -1:
 	if(!(UnityEngine.Input.GetKey(KeyCode.Space)))
 	{
 
-	s1 = -1;
+	s3 = -1;
 return;	}else
 	{
 
@@ -256,7 +273,7 @@ return;	}else
 	case 0:
 	Position = ((Position) + (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
 	IsMovingLegs = true;
-	s1 = -1;
+	s3 = -1;
 return;	
 	default: return;}}
 	
@@ -266,4 +283,4 @@ return;
 
 
 }
-}    
+}                  

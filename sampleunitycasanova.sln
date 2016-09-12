@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sampleunitycasanova.CSharp.Plugins", "sampleunitycasanova.CSharp.Plugins.csproj", "{1E92A337-DB94-D15A-043E-6EF0FDE83E4A}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sampleunitycasanova.CSharp", "sampleunitycasanova.CSharp.csproj", "{7E2BA24A-AFBF-5E49-C8D5-6BCEC1CDF7C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sampleunitycasanova.CSharp.Editor", "sampleunitycasanova.CSharp.Editor.csproj", "{E242B037-4A2A-A27C-168B-8D81A7EE9B2A}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E92A337-DB94-D15A-043E-6EF0FDE83E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E92A337-DB94-D15A-043E-6EF0FDE83E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E92A337-DB94-D15A-043E-6EF0FDE83E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E92A337-DB94-D15A-043E-6EF0FDE83E4A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7E2BA24A-AFBF-5E49-C8D5-6BCEC1CDF7C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E2BA24A-AFBF-5E49-C8D5-6BCEC1CDF7C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E2BA24A-AFBF-5E49-C8D5-6BCEC1CDF7C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
