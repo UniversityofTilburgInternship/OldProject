@@ -62,7 +62,7 @@ public class UnityGoblin : MonoBehaviour
 
   public static UnityGoblin Instantiate()
   {
-    var _object = GameObject.Instantiate(Resources.Load("Goblin"), new Vector3(Screen.width / 2.0f, 0.0f, Screen.height / 2.0f), Quaternion.identity) as GameObject;
+    var _object = GameObject.Instantiate(Resources.Load("Goblin"), new Vector3(Screen.width / 2.0f + Random.Range(1.0f, 20.0f), 0.0f, Screen.height / 2.0f + Random.Range(1.0f, 20.0f)), Quaternion.identity) as GameObject;
     return _object.GetComponent<UnityGoblin>();
   }
 
@@ -74,4 +74,4 @@ public class UnityGoblin : MonoBehaviour
 
 }
 
-                       
+                               

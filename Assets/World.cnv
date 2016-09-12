@@ -7,11 +7,6 @@ worldEntity World = {
 
   Goblins   : [Goblin]   
   AvatarGen : AvatarGenerator 
-    //rule Goblins =
-   //   for x in [0..AvatarGen.Amount - 1] do
-     //   for characteristic in Avatar Gen.SettingsList do
-    //        yield (Goblin.Create([(characteristic.Item1, 8)])) :: Goblins  
- //     wait false
 
   rule Goblins =
     for x in [0..AvatarGen.Amount - 1] do
