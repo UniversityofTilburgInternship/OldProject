@@ -29,4 +29,4 @@ public class Big5Personality
         return new List<int>() { this.ExtraversionScale, this.EgoismScale, this.ThoroughnessScale, this.EmotionalStabilityScale, this.OpennessScale };
     }
 }
-                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                       
