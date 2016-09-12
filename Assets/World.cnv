@@ -39,10 +39,6 @@ entity Goblin = {
   normalActivity : bool
   ref personalityValue : int
 
-  rule Position = 
-    new Vector3(Screen.width/2.0f, 0.0f, Screen.height/2.0f)
-  wait false
-
   //moving right           
   rule Position, IsMovingLegs =    
     wait Input.GetKey(KeyCode.Space) 

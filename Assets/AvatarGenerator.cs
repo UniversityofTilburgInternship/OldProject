@@ -163,4 +163,4 @@ public class AvatarGenerator : MonoBehaviour
     Debug.Log(message);
   }
 }
-            
+                       

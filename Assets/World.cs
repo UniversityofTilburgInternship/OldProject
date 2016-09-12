@@ -156,7 +156,7 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
 	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personalityValue10;
 	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personalValue10;
 	public void Update(float dt, World world) {
-frame = World.frame;		this.Rule4(dt, world);
+frame = World.frame;
 
 		this.Rule0(dt, world);
 		this.Rule1(dt, world);
@@ -164,11 +164,6 @@ frame = World.frame;		this.Rule4(dt, world);
 		this.Rule3(dt, world);
 	}
 
-	public void Rule4(float dt, World world) 
-	{
-	Position = new UnityEngine.Vector3((Screen.width) / (2f),0f,(Screen.height) / (2f));
-	}
-	
 
 
 
@@ -288,4 +283,4 @@ return;
 
 
 }
-}  
+}        
