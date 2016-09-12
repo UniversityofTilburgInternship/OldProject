@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Casanova.Prelude;
 
+public enum GoblinAnimation { Idle = 0, Walk = 1, Hit1 = 2, Run = 3, Hit2 = 4, Attack1 = 5, Attack2 = 6, Pow_Attack = 7 }
 public class UnityGoblin : MonoBehaviour
 {
   public List<Tuple<string, Tuple<int, int>>> listSettings { get; set; }
@@ -12,15 +13,13 @@ public class UnityGoblin : MonoBehaviour
     set { gameObject.GetComponent<Renderer>().material.color = value; }
   }
 
-  public bool IsMovingLegs
+  public GoblinAnimation CurrentAnimation
   {
-    get { return gameObject.GetComponent<Animation>(); }
     set
     {
-      if (value && !gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("walk"))
+      if (!gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(value.ToString().ToLower()))
       {
-
-        gameObject.GetComponent<Animator>().Play("cast");
+        gameObject.GetComponent<Animator>().Play(value.ToString().ToLower());
       }
     }
   }
@@ -73,4 +72,4 @@ public class UnityGoblin : MonoBehaviour
   }
 
 }
-        
+                               

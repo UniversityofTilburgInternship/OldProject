@@ -110,11 +110,10 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
 		public UnityEngine.Color Color{  get { return UnityGoblin.Color; }
   set{UnityGoblin.Color = value; }
  }
+	public GoblinAnimation CurrentAnimation{  set{UnityGoblin.CurrentAnimation = value; }
+ }
 	public System.Boolean Destroyed{  get { return UnityGoblin.Destroyed; }
   set{UnityGoblin.Destroyed = value; }
- }
-	public System.Boolean IsMovingLegs{  get { return UnityGoblin.IsMovingLegs; }
-  set{UnityGoblin.IsMovingLegs = value; }
  }
 	public UnityEngine.Vector3 Position{  get { return UnityGoblin.Position; }
   set{UnityGoblin.Position = value; }
@@ -251,7 +250,7 @@ return;	}else
 	goto case 0;	}
 	case 0:
 	Position = ((Position) - (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
-	IsMovingLegs = true;
+	CurrentAnimation = GoblinAnimation.Walk;
 	s2 = -1;
 return;	
 	default: return;}}
@@ -272,7 +271,7 @@ return;	}else
 	goto case 0;	}
 	case 0:
 	Position = ((Position) + (new UnityEngine.Vector3((dt) * (2f),0f,0f)));
-	IsMovingLegs = true;
+	CurrentAnimation = GoblinAnimation.Run;
 	s3 = -1;
 return;	
 	default: return;}}
@@ -283,4 +282,4 @@ return;
 
 
 }
-}                           
+}    

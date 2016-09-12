@@ -41,14 +41,14 @@ entity Goblin = {
   ref personalityValue : int
      
   //moving right           
-  rule Position, IsMovingLegs =    
+  rule Position, CurrentAnimation =     
     wait Input.GetKey(KeyCode.Space) 
-    yield Position + new Vector3(dt *2.0f, 0.0f, 0.0f), true    
+    yield Position + new Vector3(dt *2.0f, 0.0f, 0.0f), GoblinAnimation.Run
 
   //moving left
-  rule Position, IsMovingLegs =
+  rule Position, CurrentAnimation =
     wait Input.GetKey(KeyCode.C)
-    yield Position - new Vector3(dt*2.0f, 0.0f, 0.0f), true
+    yield Position - new Vector3(dt*2.0f, 0.0f, 0.0f), GoblinAnimation.Walk
 
   rule personalityValue = 
     let randomPersonalityIndex = Random.Range(0, settings.Count * 2)
