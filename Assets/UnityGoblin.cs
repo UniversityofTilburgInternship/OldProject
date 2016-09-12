@@ -6,6 +6,7 @@ using Casanova.Prelude;
 public enum GoblinAnimation { Idle = 0, Walk = 1, Hit1 = 2, Run = 3, Hit2 = 4, Attack1 = 5, Attack2 = 6, Pow_Attack = 7 }
 public class UnityGoblin : MonoBehaviour
 {
+  public List<PersonalityAnimation> animations = new List<PersonalityAnimation>();
   public List<Tuple<string, Tuple<int, int>>> listSettings { get; set; }
   public Color Color
   {
@@ -49,8 +50,14 @@ public class UnityGoblin : MonoBehaviour
   }
   void Start()
   {
-    //AvatarGenerator settings = gameObject.GetComponent<AvatarGenerator>();
-    //listSettings = settings.SettingsList;
+    animations =  AnimationDataCollector.getAnimations();
+    foreach (PersonalityAnimation animation in animations)
+    {
+      Debug.Log(animation.getAnimID());
+      foreach(string personalityname  in animation.getPersonalities()) {
+        Debug.Log(personalityname);
+      }
+    }
   }
 
   public Vector3 Position
@@ -71,4 +78,4 @@ public class UnityGoblin : MonoBehaviour
     return GameObject.Find("/Goblin").GetComponent<UnityGoblin>();
   }
 
-}
+}                                           

@@ -27,7 +27,6 @@ worldEntity World = {
 }
 
 
- 
 entity Goblin = { 
   inherit UnityGoblin 
   settings : [(string * int)]
@@ -52,14 +51,15 @@ entity Goblin = {
     else
       let personalValue =  settings.[randomPersonalityIndex]
       yield personalValue.Item2
-
-  rule normalActivity =
+ 
+  rule normalActivity, CurrentAnimation =
     let chance_factor = 1
     if ((personalityValue / Random.Range(1,100)) > chance_factor) then
       AvatarGenerator.Log(true)
+      yield true, GoblinAnimation.Attack1 
     else
       AvatarGenerator.Log(false)
-    yield true    
+      yield false, GoblinAnimation.Idle
     wait 10.0f
     
 

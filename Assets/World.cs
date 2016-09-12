@@ -122,6 +122,9 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
   set{UnityGoblin.Scale = value; }
  }
 	public UnityGoblin UnityGoblin;
+	public System.Collections.Generic.List<PersonalityAnimation> animations{  get { return UnityGoblin.animations; }
+  set{UnityGoblin.animations = value; }
+ }
 	public System.Boolean enabled{  get { return UnityGoblin.enabled; }
   set{UnityGoblin.enabled = value; }
  }
@@ -176,31 +179,31 @@ frame = World.frame;
 	if(((((personalityValue) / (UnityEngine.Random.Range(1,100)))) > (___chance_factor00)))
 	{
 
-	goto case 3;	}else
+	goto case 7;	}else
 	{
 
-	goto case 4;	}
-	case 3:
+	goto case 8;	}
+	case 7:
 	AvatarGenerator.Log(true);
-	s0 = 2;
-return;
-	case 4:
-	AvatarGenerator.Log(false);
-	s0 = 2;
-return;
-	case 2:
 	normalActivity = true;
-	s0 = 0;
+	CurrentAnimation = GoblinAnimation.Attack1;
+	s0 = 5;
 return;
-	case 0:
+	case 8:
+	AvatarGenerator.Log(false);
+	normalActivity = false;
+	CurrentAnimation = GoblinAnimation.Idle;
+	s0 = 5;
+return;
+	case 5:
 	count_down1 = 10f;
-	goto case 1;
-	case 1:
+	goto case 6;
+	case 6:
 	if(((count_down1) > (0f)))
 	{
 
 	count_down1 = ((count_down1) - (dt));
-	s0 = 1;
+	s0 = 6;
 return;	}else
 	{
 
@@ -218,16 +221,16 @@ return;	}
 	if(((___randomPersonalityIndex10) > (((settings.Count) - (1)))))
 	{
 
-	goto case 9;	}else
+	goto case 15;	}else
 	{
 
-	goto case 10;	}
-	case 9:
+	goto case 16;	}
+	case 15:
 	___personalityValue10 = (settings)[((___randomPersonalityIndex10) - (settings.Count))];
 	personalityValue = ((100) - (___personalityValue10.Item2));
 	s1 = -1;
 return;
-	case 10:
+	case 16:
 	___personalValue10 = (settings)[___randomPersonalityIndex10];
 	personalityValue = ___personalValue10.Item2;
 	s1 = -1;
@@ -282,4 +285,4 @@ return;
 
 
 }
-}    
+}               
