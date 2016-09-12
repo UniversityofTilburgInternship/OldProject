@@ -8,15 +8,16 @@ public class AnimationDataCollector : MonoBehaviour
 {
   private static string pathToSettings;
   private static List<PersonalityAnimation> listanimations = new List<PersonalityAnimation>();
-  public static List<PersonalityAnimation> getAnimations() {
+  public static List<PersonalityAnimation> getAnimations()
+  {
     readlist();
     return listanimations;
   }
   // Use this for initialization
-  private static void readlist() {
+  private static void readlist()
+  {
     pathToSettings = Application.dataPath + "\\Resources\\settings.xml";
     XmlDocument settings = loadXMLSettings(pathToSettings);
-
     XmlNode animations = settings.SelectSingleNode("settings/animations");
     foreach (XmlNode animation in animations)
     {
@@ -24,7 +25,7 @@ public class AnimationDataCollector : MonoBehaviour
       newPersonalityAnimation.setAnimID(stripSpecialCharacters(animation["name"].InnerText));
       foreach (XmlNode personality in animation["personalities"])
       {
-        newPersonalityAnimation.addPersonality(stripSpecialCharacters(personality.InnerText));
+        newPersonalityAnimation.addPersonality(int.Parse(stripSpecialCharacters(personality.InnerText)));
       }
       listanimations.Add(newPersonalityAnimation);
     }
@@ -48,4 +49,4 @@ public class AnimationDataCollector : MonoBehaviour
 
   }
 }
-               
+                                             

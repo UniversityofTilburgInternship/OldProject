@@ -32,6 +32,7 @@ entity Goblin = {
   settings : [(string * int)]
   normalActivity : bool
   ref personalityValue : int
+  ref personalityIndex : int
 
   //moving right           
   rule Position, CurrentAnimation =     
@@ -43,29 +44,30 @@ entity Goblin = {
     wait Input.GetKey(KeyCode.C)
     yield Position - new Vector3(dt*2.0f, 0.0f, 0.0f), GoblinAnimation.Walk
 
-  rule personalityValue = 
+  rule personalityValue, personalityIndex = 
     let randomPersonalityIndex = Random.Range(0, settings.Count * 2)
     if (randomPersonalityIndex > (settings.Count)-1) then
       let personalityValue = settings.[randomPersonalityIndex - settings.Count]
-      yield 100 - personalityValue.Item2
+      yield 100 - personalityValue.Item2, randomPersonalityIndex
     else
       let personalValue =  settings.[randomPersonalityIndex]
-      yield personalValue.Item2
- 
-  rule normalActivity, CurrentAnimation =
+      yield personalValue.Item2, randomPersonalityIndex
+    wait 10.0f
+  
+  rule normalActivity =
     let chance_factor = 1
     if ((personalityValue / Random.Range(1,100)) > chance_factor) then
-      AvatarGenerator.Log(true)
-      yield true, GoblinAnimation.Attack1 
+      UnityGoblin.Animate(personalityIndex)   
+      yield true 
     else
-      AvatarGenerator.Log(false)
-      yield false, GoblinAnimation.Idle
+      yield false
     wait 10.0f
-    
+     
 
   Create(Settings : [(string * int)]) =  
     {
       personalityValue = 0
+      personalityIndex = 0
       normalActivity = false
       settings = Settings
       UnityGoblin = UnityGoblin.Instantiate()

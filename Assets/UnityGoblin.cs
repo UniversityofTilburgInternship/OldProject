@@ -6,13 +6,15 @@ using Casanova.Prelude;
 public enum GoblinAnimation { Idle = 0, Walk = 1, Hit1 = 2, Run = 3, Hit2 = 4, Attack1 = 5, Attack2 = 6, Pow_Attack = 7 }
 public class UnityGoblin : MonoBehaviour
 {
-  public List<PersonalityAnimation> animations = new List<PersonalityAnimation>();
+  public static List<PersonalityAnimation> animations = new List<PersonalityAnimation>();
   public List<Tuple<string, Tuple<int, int>>> listSettings { get; set; }
   public Color Color
   {
     get { return gameObject.GetComponent<Renderer>().material.color; }
     set { gameObject.GetComponent<Renderer>().material.color = value; }
   }
+
+
 
   public GoblinAnimation CurrentAnimation
   {
@@ -24,6 +26,36 @@ public class UnityGoblin : MonoBehaviour
       }
     }
   }
+
+  public int ToProxyCode { get { return ToProxyCode; } set { this.ToProxyCode = value; Animate(value); } }
+
+
+  public void Animate(int id)
+  {
+    //  foreach (PersonalityAnimation animationa in animations)
+    //  {
+    //    if (animationa.containsPersonality(id))
+    //    {
+    //      gameObject.GetComponent<Animator>().Play();
+    //      break;
+    //    }
+    //  }
+    //}
+    PersonalityAnimation animation = null;
+    List<PersonalityAnimation> foundItems = new List<PersonalityAnimation>();
+    for (int i = 0; i < animations.Count; i++)
+    {
+
+      if (animations[i].containsPersonality(id))
+      {
+        foundItems.Add(animations[i]);
+      }
+    }
+
+    int randomIndex = Random.Range(0, foundItems.Count - 1);
+    gameObject.GetComponent<Animator>().Play(animations[randomIndex].getAnimID());
+  }
+
 
   public Vector3 Scale
   {
@@ -50,14 +82,7 @@ public class UnityGoblin : MonoBehaviour
   }
   void Start()
   {
-    animations =  AnimationDataCollector.getAnimations();
-    foreach (PersonalityAnimation animation in animations)
-    {
-      Debug.Log(animation.getAnimID());
-      foreach(string personalityname  in animation.getPersonalities()) {
-        Debug.Log(personalityname);
-      }
-    }
+    animations = (AvatarGenerator.Find()).animations;
   }
 
   public Vector3 Position
@@ -78,4 +103,4 @@ public class UnityGoblin : MonoBehaviour
     return GameObject.Find("/Goblin").GetComponent<UnityGoblin>();
   }
 
-}                                           
+}       

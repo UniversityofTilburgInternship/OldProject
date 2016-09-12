@@ -31,69 +31,69 @@
   </personalities>
   <animations>
     <animation>
-      <name>idle</name>
+      <name>cast</name>
       <personalities>
-        <personality>introversion</personality>
-        <personality>extraversion</personality>
-        <personality>thoroughness</personality>
-        <personality>egoism</personality>
-        <personality>chaoticness</personality>
-        <personality>altruism</personality>
-        <personality>emotionalstability</personality>
-        <personality>neuroticism</personality>
+        <personality>5</personality>
+        <personality>1</personality>
+        <personality>3</personality>
+        <personality>2</personality>
+        <personality>7</personality>
+        <personality>6</personality>
+        <personality>4</personality>
+        <personality>8</personality>
       </personalities>
     </animation>
     <animation>
       <name>walk</name>
       <personalities>
-        <personality>extraversion</personality>
-        <personality>altruism</personality>
-        <personality>neuroticism</personality>
+        <personality>1</personality>
+        <personality>6</personality>
+        <personality>8</personality>
       </personalities>
     </animation>
     <animation>
       <name>hit1</name>
       <personalities>
-        <personality>thoroughness</personality>
-        <personality>neuroticism</personality>
+        <personality>3</personality>
+        <personality>8</personality>
       </personalities>
     </animation>
     <animation>
       <name>run</name>
       <personalities>
-        <personality>introversion</personality>
-        <personality>emotionalstability</personality>
+        <personality>5</personality>
+        <personality>4</personality>
       </personalities>
     </animation>
     <animation>
       <name>hit2</name>
       <personalities>
-        <personality>introversion</personality>
-        <personality>egoism</personality>
-        <personality>chaoticness</personality>
-        <personality>altruism</personality>
+        <personality>5</personality>
+        <personality>2</personality>
+        <personality>7</personality>
+        <personality>6</personality>
       </personalities>
     </animation>
     <animation>
       <name>attack1</name>
       <personalities>
-        <personality>extraversion</personality>
-        <personality>altruism</personality>
-        <personality>neuroticism</personality>
+        <personality>1</personality>
+        <personality>6</personality>
+        <personality>8</personality>
       </personalities>
     </animation>
     <animation>
       <name>attack2</name>
       <personalities>
-        <personality>thoroughness</personality>
-        <personality>egoism</personality>
-        <personality>emotionalstability</personality>
+        <personality>3</personality>
+        <personality>2</personality>
+        <personality>4</personality>
       </personalities>
     </animation>
     <animation>
       <name>pow_attack</name>
       <personalities>
-        <personality>neuroticism</personality>
+        <personality>8</personality>
       </personalities>
     </animation>
   </animations>

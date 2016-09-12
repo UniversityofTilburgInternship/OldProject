@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class PersonalityAnimation : MonoBehaviour
 {
   private string AnimID;
-  private List<string> personalities = new List<string>();
+  private List<int> personalities = new List<int>();
 
-  public void addPersonality(string personality)
+  public void addPersonality(int personality)
   {
     personalities.Add(personality);
   }
@@ -15,12 +15,16 @@ public class PersonalityAnimation : MonoBehaviour
   public string getAnimID() { return AnimID; }
   public void setAnimID(string animID) { this.AnimID = animID; }
 
-  public List<string> getPersonalities() { return personalities; }
-  public void setPersonalities(List<string> personality) { this.personalities = personality; }
+  public List<int> getPersonalities() { return personalities; }
+  public void setPersonalities(List<int> personality) { this.personalities = personality; }
 
-  public bool containsPersonality(string personalityName)
+  public bool containsPersonality(int personalityName)
   {
-    return this.personalities.Contains(personalityName);
+    foreach (int i in personalities)
+    {
+      if (i == personalityName) return true;
+    }
+    return false;
   }
 
   // Use this for initialization
@@ -35,4 +39,4 @@ public class PersonalityAnimation : MonoBehaviour
 
   }
 }
-                        
+                     

@@ -40,11 +40,21 @@ public class AvatarGenerator : MonoBehaviour
 
   public List<Tuple<string, Tuple<int, int>>> SettingsList;
   private string pathToSettings;
+  public List<PersonalityAnimation> animations = new List<PersonalityAnimation>();
+
 
 
   // Use this for initialization
   void Start()
   {
+    
+    SettingsList = settingsToList();
+
+    animations = AnimationDataCollector.getAnimations();
+
+  }
+
+void parseXml() {
     pathToSettings = Application.dataPath + "\\Resources\\settings.xml";
 
     XmlDocument settings = loadXMLSettings(pathToSettings);
@@ -116,10 +126,8 @@ public class AvatarGenerator : MonoBehaviour
 
       settings.Save(pathToSettings);
     }
-
-    SettingsList = settingsToList();
-
   }
+
   // Update is called once per frame
   void Update()
   {
@@ -152,7 +160,8 @@ public class AvatarGenerator : MonoBehaviour
   public static AvatarGenerator Find()
   {
     var avatarGenerator = GameObject.Find("AvatarGenerator").GetComponent<AvatarGenerator>();
-    avatarGenerator.Start();
+    avatarGenerator.parseXml();
+
     //ListSettings = avatarGenerator.SettingsList;
     //amountOfAvatars = avatarGenerator.Amount;
     return avatarGenerator;
@@ -162,4 +171,4 @@ public class AvatarGenerator : MonoBehaviour
   {
     Debug.Log(message);
   }
-}                                           
+}                                                                                                                                           

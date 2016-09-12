@@ -103,6 +103,7 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
  frame = World.frame;
 		settings = Settings;
 		personalityValue = 0;
+		personalityIndex = 0;
 		normalActivity = false;
 		UnityGoblin = UnityGoblin.Instantiate();
 		
@@ -120,6 +121,9 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
  }
 	public UnityEngine.Vector3 Scale{  get { return UnityGoblin.Scale; }
   set{UnityGoblin.Scale = value; }
+ }
+	public System.Int32 ToProxyCode{  get { return UnityGoblin.ToProxyCode; }
+  set{UnityGoblin.ToProxyCode = value; }
  }
 	public UnityGoblin UnityGoblin;
 	public System.Collections.Generic.List<PersonalityAnimation> animations{  get { return UnityGoblin.animations; }
@@ -142,6 +146,7 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
   set{UnityGoblin.name = value; }
  }
 	public System.Boolean normalActivity;
+	public System.Int32 personalityIndex;
 	public System.Int32 personalityValue;
 	public List<Casanova.Prelude.Tuple<System.String, System.Int32>> settings;
 	public System.String tag{  get { return UnityGoblin.tag; }
@@ -157,6 +162,7 @@ public Goblin(List<Casanova.Prelude.Tuple<System.String, System.Int32>> Settings
 	public System.Int32 ___randomPersonalityIndex10;
 	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personalityValue10;
 	public Casanova.Prelude.Tuple<System.String, System.Int32> ___personalValue10;
+	public System.Single count_down2;
 	public void Update(float dt, World world) {
 frame = World.frame;
 
@@ -184,15 +190,12 @@ frame = World.frame;
 
 	goto case 8;	}
 	case 7:
-	AvatarGenerator.Log(true);
+	UnityGoblin.Animate(personalityIndex);
 	normalActivity = true;
-	CurrentAnimation = GoblinAnimation.Attack1;
 	s0 = 5;
 return;
 	case 8:
-	AvatarGenerator.Log(false);
 	normalActivity = false;
-	CurrentAnimation = GoblinAnimation.Idle;
 	s0 = 5;
 return;
 	case 5:
@@ -221,20 +224,36 @@ return;	}
 	if(((___randomPersonalityIndex10) > (((settings.Count) - (1)))))
 	{
 
-	goto case 15;	}else
+	goto case 16;	}else
 	{
 
-	goto case 16;	}
-	case 15:
+	goto case 17;	}
+	case 16:
 	___personalityValue10 = (settings)[((___randomPersonalityIndex10) - (settings.Count))];
 	personalityValue = ((100) - (___personalityValue10.Item2));
-	s1 = -1;
+	personalityIndex = ___randomPersonalityIndex10;
+	s1 = 14;
 return;
-	case 16:
+	case 17:
 	___personalValue10 = (settings)[___randomPersonalityIndex10];
 	personalityValue = ___personalValue10.Item2;
+	personalityIndex = ___randomPersonalityIndex10;
+	s1 = 14;
+return;
+	case 14:
+	count_down2 = 10f;
+	goto case 15;
+	case 15:
+	if(((count_down2) > (0f)))
+	{
+
+	count_down2 = ((count_down2) - (dt));
+	s1 = 15;
+return;	}else
+	{
+
 	s1 = -1;
-return;	
+return;	}	
 	default: return;}}
 	
 
@@ -285,4 +304,4 @@ return;
 
 
 }
-}               
+}    
