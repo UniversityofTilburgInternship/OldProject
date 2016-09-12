@@ -267,5 +267,3 @@ public class RuleTable
     }
   }
 }
-
-          
