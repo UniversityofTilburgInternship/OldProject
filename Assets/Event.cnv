@@ -1,0 +1,20 @@
+module Event
+
+entity Event = {
+
+    currentRadius : float32
+    currentThresholds : [(string * int)]
+
+    //parse xmls, call static method to take a random threshold list, refresh every X time
+    rule currentThresholds, currentRadius =
+     
+
+    Create(InitalThresholds : [(string * int)], Radius : float32) =
+     {
+        currentThresholds = InitialThresholds
+        currentRadius = Radius
+     }
+}
+
+
+

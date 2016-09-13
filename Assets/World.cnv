@@ -2,9 +2,10 @@ module Game
 
 open "UnityEngine.dll"
 open UnityEngine
-
+open Event
+ 
 worldEntity World = {
-
+  Event     : Event
   Goblins   : [Goblin]   
   AvatarGen : AvatarGenerator 
 
@@ -20,6 +21,7 @@ worldEntity World = {
   
   Create() =  
     let avatar_generator = AvatarGenerator.Find()
+    let test_personality_thresholds = [||]
     {
        AvatarGen = avatar_generator 
        Goblins = []
