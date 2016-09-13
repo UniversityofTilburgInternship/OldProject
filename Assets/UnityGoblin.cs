@@ -32,16 +32,6 @@ public class UnityGoblin : MonoBehaviour
 
   public void Animate(int id)
   {
-    //  foreach (PersonalityAnimation animationa in animations)
-    //  {
-    //    if (animationa.containsPersonality(id))
-    //    {
-    //      gameObject.GetComponent<Animator>().Play();
-    //      break;
-    //    }
-    //  }
-    //}
-    PersonalityAnimation animation = null;
     List<PersonalityAnimation> foundItems = new List<PersonalityAnimation>();
     for (int i = 0; i < animations.Count; i++)
     {
@@ -103,4 +93,4 @@ public class UnityGoblin : MonoBehaviour
     return GameObject.Find("/Goblin").GetComponent<UnityGoblin>();
   }
 
-}                                                           
+}                                                             
