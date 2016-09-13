@@ -31,8 +31,10 @@ entity Goblin = {
   inherit UnityGoblin 
   settings : [(string * int)]
   normalActivity : bool
+  Velocity : Vector3
   ref personalityValue : int
   ref personalityIndex : int
+  ref newPosition : Vector3
 
   //moving right           
   rule Position, CurrentAnimation =     
@@ -57,19 +59,31 @@ entity Goblin = {
   rule normalActivity =
     let chance_factor = 1
     if ((personalityValue / Random.Range(1,100)) > chance_factor) then
-      UnityGoblin.Animate(personalityIndex)   
+      UnityGoblin.Animate(personalityIndex)    
       yield true 
     else
       yield false
     wait 10.0f
      
 
+  rule Position, Velocity = 
+    let dir0 = newPosition - Position
+    yield Position, dir0.normalized
+    wait Vector3.Dot(dir0, newPosition - Position) < 0.0f
+    yield newPosition , Vector3.zero
+     
+  rule Position = yield Position + Velocity * dt
+
   Create(Settings : [(string * int)]) =  
+    let goblin = UnityGoblin.Instantiate()
+    let randomvector = new Vector3(Random.Range(goblin.Position.x + 10.0f,  goblin.Position.x - 20.0f), goblin.Position.y, Random.Range(goblin.Position.z + 10.0f, goblin.Position.z -  20.0f))
     {
+      Velocity = Vector3.zero
+      newPosition = randomvector
       personalityValue = 0
       personalityIndex = 0
       normalActivity = false
       settings = Settings
-      UnityGoblin = UnityGoblin.Instantiate()
+      UnityGoblin = goblin
     }
 }
