@@ -32,16 +32,6 @@ public class UnityGoblin : MonoBehaviour
 
   public void Animate(int id)
   {
-    //  foreach (PersonalityAnimation animationa in animations)
-    //  {
-    //    if (animationa.containsPersonality(id))
-    //    {
-    //      gameObject.GetComponent<Animator>().Play();
-    //      break;
-    //    }
-    //  }
-    //}
-    PersonalityAnimation animation = null;
     List<PersonalityAnimation> foundItems = new List<PersonalityAnimation>();
     for (int i = 0; i < animations.Count; i++)
     {
@@ -91,6 +81,26 @@ public class UnityGoblin : MonoBehaviour
     set { gameObject.transform.position = value; }
   }
 
+  public Vector3 Forward
+  {
+    get
+    {
+      return gameObject.transform.forward;
+    }
+  }
+
+  public Vector3 Rotation
+  {
+    get
+    {
+      return gameObject.transform.rotation.eulerAngles;
+    }
+    set
+    {
+      gameObject.transform.rotation = Quaternion.LookRotation(value);
+    }
+  }
+
   public static UnityGoblin Instantiate()
   {
     var _object = GameObject.Instantiate(Resources.Load("Goblin"), new Vector3(Screen.width / 2.0f + Random.Range(1.0f, 20.0f), 0.0f, Screen.height / 2.0f + Random.Range(1.0f, 20.0f)), Quaternion.identity) as GameObject;
@@ -104,5 +114,4 @@ public class UnityGoblin : MonoBehaviour
   }
 
 }
-
-           
+                        

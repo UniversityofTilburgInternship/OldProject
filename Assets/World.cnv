@@ -65,21 +65,26 @@ entity Goblin = {
       yield false
     wait 10.0f
      
- 
+
   rule Position, Velocity = 
     let dir0 = newPosition - Position
     yield Position, dir0.normalized
     wait Vector3.Dot(dir0, newPosition - Position) < 0.0f
-    yield newPosition , Vector3.zero
+    yield Position, Vector3.zero 
      
-  rule Position = yield Position + Velocity * dt
+  rule Position, Rotation = 
+    let dir0 = newPosition - Position
+    yield Position + Velocity * dt, Vector3.RotateTowards(Forward, dir0, dt * 10.0f, 0.0f)
+
+  rule newPosition = 
+    yield new Vector3(Random.Range(UnityGoblin.Position.x + 10.0f,  UnityGoblin.Position.x - 20.0f), UnityGoblin.Position.y, Random.Range(UnityGoblin.Position.z + 10.0f, UnityGoblin.Position.z -  20.0f))
+    wait 10.0f
 
   Create(Settings : [(string * int)]) =  
     let goblin = UnityGoblin.Instantiate()
-    let randomvector = new Vector3(Random.Range(goblin.Position.x + 10.0f,  goblin.Position.x - 20.0f), goblin.Position.y, Random.Range(goblin.Position.z + 10.0f, goblin.Position.z -  20.0f))
     {
       Velocity = Vector3.zero
-      newPosition = randomvector
+      newPosition = Vector3.zero
       personalityValue = 0
       personalityIndex = 0
       normalActivity = false
