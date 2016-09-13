@@ -47,14 +47,15 @@ public class AvatarGenerator : MonoBehaviour
   // Use this for initialization
   void Start()
   {
-    
+
     SettingsList = settingsToList();
 
     animations = AnimationDataCollector.getAnimations();
 
   }
 
-void parseXml() {
+  void parseXml()
+  {
     pathToSettings = Application.dataPath + "\\Resources\\settings.xml";
 
     XmlDocument settings = loadXMLSettings(pathToSettings);
@@ -171,4 +172,4 @@ void parseXml() {
   {
     Debug.Log(message);
   }
-}                                                                                                                                                                                                                 
+}

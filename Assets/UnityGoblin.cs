@@ -81,6 +81,26 @@ public class UnityGoblin : MonoBehaviour
     set { gameObject.transform.position = value; }
   }
 
+  public Vector3 Forward
+  {
+    get
+    {
+      return gameObject.transform.forward;
+    }
+  }
+
+  public Vector3 Rotation
+  {
+    get
+    {
+      return gameObject.transform.rotation.eulerAngles;
+    }
+    set
+    {
+      gameObject.transform.rotation = Quaternion.LookRotation(value);
+    }
+  }
+
   public static UnityGoblin Instantiate()
   {
     var _object = GameObject.Instantiate(Resources.Load("Goblin"), new Vector3(Screen.width / 2.0f + Random.Range(-10.0f, 30.0f), 0.0f, Screen.height / 2.0f + Random.Range(-21.0f, -50.0f)), Quaternion.identity) as GameObject;
@@ -93,4 +113,4 @@ public class UnityGoblin : MonoBehaviour
     return GameObject.Find("/Goblin").GetComponent<UnityGoblin>();
   }
 
-}                                                                             
+}
