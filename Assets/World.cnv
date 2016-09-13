@@ -65,7 +65,7 @@ entity Goblin = {
       yield false
     wait 10.0f
      
-
+ 
   rule Position, Velocity = 
     let dir0 = newPosition - Position
     yield Position, dir0.normalized
